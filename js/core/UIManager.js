@@ -85,7 +85,7 @@ export default class UIManager {
             choiceGroup.style.display = 'none';
         }
         
-        // 特殊图片仅在节点 30483-30486 时显示，否则从DOM中移除
+        // 特殊图片仅在节点 30483-30486 时显示，其余节点保持隐藏
         try {
             const currentNodeId = this.engine && this.engine.gameState && this.engine.gameState.currentSave
                 ? this.engine.gameState.currentSave.nodeId
@@ -106,17 +106,22 @@ export default class UIManager {
                     specialImg.src = './assets/img/1.png';
                     specialImg.dataset.seq = '30483';
                     specialImg.alt = 'special';
-                    specialImg.style.cssText = 'width:220px; height:123px; cursor:pointer; --pulse-duration:3s; --pulse-min:0.7; --glow-color: rgba(255,230,140,0.9); --glow-size: 24px; --hover-scale:1.08; --hover-glow-intensity:0.5;';
                     container.appendChild(specialImg);
                 }
-                // 确保显示
+                if (container) {
+                    container.style.display = 'block';
+                    container.setAttribute('aria-hidden', 'false');
+                }
                 if (specialImg) {
-                    specialImg.style.display = 'inline-block';
+                    specialImg.style.display = 'block';
                 }
             } else {
-                // 如果不应该显示且元素存在，则移除
+                if (container) {
+                    container.style.display = 'none';
+                    container.setAttribute('aria-hidden', 'true');
+                }
                 if (specialImg) {
-                    specialImg.remove();
+                    specialImg.style.display = 'none';
                 }
             }
         } catch (e) {

@@ -221,6 +221,25 @@ const GameView = {
                 @media (prefers-reduced-motion: reduce) {
                     .special-image { animation: none !important; transition: none !important; }
                 } 
+                #special-image-container {
+                    position: fixed;
+                    top: 18px;
+                    left: 18px;
+                    z-index: 120;
+                    display: none;
+                }
+                #special-click-img {
+                    width: clamp(128px, 18vw, 220px);
+                    height: auto;
+                    display: block;
+                    cursor: pointer;
+                    --pulse-duration: 3s;
+                    --pulse-min: 0.7;
+                    --glow-color: rgba(255,230,140,0.9);
+                    --glow-size: 24px;
+                    --hover-scale: 1.08;
+                    --hover-glow-intensity: 0.5;
+                }
                 .tooltip kbd {
                     display: inline-block;
                     padding: 2px 6px;
@@ -402,6 +421,21 @@ const GameView = {
                         overflow: hidden;
                         text-overflow: ellipsis;
                     }
+                    #special-image-container {
+                        top: calc(var(--safe-top, 0px) + 8px);
+                        left: calc(var(--safe-left, 0px) + 8px);
+                    }
+                    #special-click-img {
+                        width: min(15vw, 72px);
+                        --glow-size: 14px;
+                        --hover-scale: 1.04;
+                    }
+                }
+                @media (max-width: 520px) {
+                    #special-click-img {
+                        width: min(16vw, 58px);
+                        --glow-size: 12px;
+                    }
                 }
             </style>
             <div class="view game-view">
@@ -455,8 +489,8 @@ const GameView = {
                     </button>
                 </div>
 
-                <div id="special-image-container" style="position: fixed; top: 18px; left: 18px; z-index: 120;">
-                    <img id="special-click-img" class="special-image" src="./assets/img/1.png" data-seq="30483" alt="special" style="width:220px; height:123px; cursor:pointer; --pulse-duration:3s; --pulse-min:0.7; --glow-color: rgba(255,230,140,0.9); --glow-size: 24px; --hover-scale:1.08; --hover-glow-intensity:0.5; display:block;">
+                <div id="special-image-container" aria-hidden="true">
+                    <img id="special-click-img" class="special-image" src="./assets/img/1.png" data-seq="30483" alt="special">
                 </div>
 
                 <!-- 历史记录浮层 -->
