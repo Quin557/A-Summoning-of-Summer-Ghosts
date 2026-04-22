@@ -1,328 +1,263 @@
+import { bindInteractivePress } from '../utils/interactions.js';
+
 const MainMenuView = {
-  render: (container, engine) => {
-    const L = engine.localization;
-    const bgImages = ['./assets/img/bgr/mainmenu.png'];
-    const randomIndex = Math.floor(Math.random() * bgImages.length);
+    render: (container, engine) => {
+        const L = engine.localization;
+        const hasActiveGame = engine.gameState.currentSave !== null;
 
-    // 检查是否存在一个活动的游戏会话
-    const hasActiveGame = engine.gameState.currentSave !== null;
+        container.innerHTML = `
+            <style>
+                .main-menu-view {
+                    position: relative;
+                    width: 100vw;
+                    height: calc(var(--app-vh, 1vh) * 100);
+                    overflow: hidden;
+                }
 
-    container.innerHTML = `
-      <style>
-        :root{
-          --title-font-size: clamp(24px, 4vw, 48px);
-          --btn-width: clamp(12rem, 16vw, 18rem);
-          --btn-font-scale: 0.78;
-          --btn-hover-scale: 1.06;
-          --btn-press-translate: 6px;
-          --btn-press-scale: 0.985;
+                .main-menu-view::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(90deg, rgba(5, 7, 17, 0.1) 0%, rgba(6, 7, 16, 0.34) 28%, rgba(8, 10, 18, 0.1) 48%, rgba(8, 10, 18, 0.02) 100%);
+                    pointer-events: none;
+                }
 
-          /* ≈间距控制：值越“负”越挤，这里略微放松，从 -6px 改为 -2px */
-          --btn-stack-overlap: -2px;
+                .menu-stack {
+                    --menu-width: clamp(220px, 19vw, 330px);
+                    --menu-scale: 1;
+                    position: absolute;
+                    top: 50%;
+                    left: 75vw;
+                    transform: translate(-50%, -50%) scale(var(--menu-scale));
+                    transform-origin: center center;
+                    width: var(--menu-width);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    z-index: 2;
+                    max-height: 84vh;
+                }
 
-          /* 按钮整体向下偏移（可按需调整） */
-          --btn-group-offset: 8vh;
-        }
+                .menu-title {
+                    width: 100%;
+                    margin: 0 0 18px;
+                    font-family: var(--font-title);
+                    font-size: clamp(26px, 3.7vw, 54px);
+                    line-height: 1.08;
+                    text-align: center;
+                    color: #fff;
+                    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.42);
+                    white-space: nowrap;
+                    animation: menu-title-flicker 3.6s ease-in-out infinite;
+                }
 
-        .view.main-menu-view{
-          width:100vw;height:100vh;position:relative;overflow:hidden;
-        }
-        .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;}
+                @keyframes menu-title-flicker {
+                    0%, 100% {
+                        opacity: 1;
+                        text-shadow:
+                            0 4px 18px rgba(0, 0, 0, 0.42),
+                            0 0 9px rgba(255, 236, 176, 0.24);
+                    }
+                    48% {
+                        opacity: 0.94;
+                        text-shadow:
+                            0 4px 18px rgba(0, 0, 0, 0.42),
+                            0 0 16px rgba(255, 239, 180, 0.44);
+                    }
+                    52% {
+                        opacity: 0.88;
+                        text-shadow:
+                            0 4px 18px rgba(0, 0, 0, 0.42),
+                            0 0 22px rgba(255, 234, 156, 0.62);
+                    }
+                    56% {
+                        opacity: 0.96;
+                        text-shadow:
+                            0 4px 18px rgba(0, 0, 0, 0.42),
+                            0 0 12px rgba(255, 238, 182, 0.36);
+                    }
+                }
 
-        /* 将标题与按钮作为同一居中区域（区域 N），确保中垂线一致 */
-        .menu-container{
-          position:absolute;top:4%;left:80%;transform:translateX(-50%);
-          display:flex;flex-direction:column;align-items:center;
-        }
+                .menu-actions {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0;
+                }
 
-  .header{display:flex;flex-direction:column;align-items:center;margin-bottom:56vh;width:auto;}
-  /* 微调：让主标题整体向下移动一点（不影响按钮中线对齐） */
-  .header { margin-top: 0.6rem; }
-        /* 使标题与按钮宽度一致，确保中垂线精确对齐 */
-        .header-title{
-          display:block;
-          width:var(--btn-width);
-          box-sizing:border-box;
-          color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.45);
-          /* 自动缩放标题字体，避免省略；以按钮宽度为参照 */
-          font-size: clamp(20px, calc(var(--btn-width) * 0.14), 64px);
-          line-height:1.05;text-align:center;
-          white-space:nowrap;
-        }
-        .header-title{ position: relative; z-index: 2; }
+                .main-menu-button {
+                    position: relative;
+                    width: 100%;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                    transition: transform 160ms ease, filter 160ms ease;
+                    touch-action: manipulation;
+                }
 
-        /* 主标题黄色闪烁（文字自身） */
-        @keyframes goldenFlicker {
-          0% { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,.45); }
-          18% { color: #f7e8b5; text-shadow: 0 6px 30px rgba(247,232,181,0.9), 0 0 10px rgba(247,232,181,0.6); }
-          40% { color: #f6e7b4; text-shadow: 0 4px 18px rgba(247,232,181,0.85), 0 0 8px rgba(247,232,181,0.5); }
-          60% { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,.45); }
-          100% { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,.45); }
-        }
-        .header-title.flicker { animation: goldenFlicker 2s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) { .header-title.flicker { animation: none; } }
+                .main-menu-button .button-img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    transition: transform 160ms ease, filter 160ms ease;
+                }
 
-        /* 按钮组整体位置与基础“无缝”布局 */
-        .main-menu-button-group{
-          display:flex;flex-direction:column;align-items:center;gap:0;
-          font-size:0;
-          margin-top: var(--btn-group-offset);
-        }
+                .main-menu-button + .main-menu-button {
+                    margin-top: -8px;
+                }
 
-        .main-menu-button{
-          position:relative;display:block;line-height:0;cursor:pointer;
-          /* 固定每个按钮容器宽度以精确对齐中线，避免缩放/放大会导致错位 */
-          width: var(--btn-width);
-          box-sizing: border-box;
-          transform-origin: center center;
-          transition:transform .18s ease, filter .18s ease;
-          will-change:transform;filter:drop-shadow(0 4px 10px rgba(0,0,0,.25));
-          margin:0;
-        }
-        /* 用轻微负 margin 叠住 PNG 的透明边；从 -6px 放松到 -2px = 间距略增 */
-        .main-menu-button + .main-menu-button{ margin-top: var(--btn-stack-overlap); }
+                .main-menu-button-label {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 72%;
+                    transform: translate(-50%, -50%);
+                    display: block;
+                    text-align: center;
+                    font-family: var(--font-button);
+                    font-size: clamp(16px, 1.7vw, 25px);
+                    line-height: 1;
+                    color: #fff;
+                    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    pointer-events: none;
+                }
 
-        .main-menu-button img.button-img{
-          width:100%;height:auto;display:block;transform-origin:center center;display:block;
-          transition: transform .12s cubic-bezier(.2,.9,.2,1), filter .12s ease;
-        }
-        /* Hover: 图片略微放大 */
-        .main-menu-button:hover img.button-img{ transform: scale(var(--btn-hover-scale)); }
+                .main-menu-button:hover .button-img,
+                .main-menu-button:focus-visible .button-img {
+                    transform: scale(1.04);
+                    filter: brightness(1.08);
+                }
 
-        /* Pressed (active): 模拟按下，图片下移并轻微缩小，文字同步下移 */
-        .main-menu-button.pressed img.button-img,
-        .main-menu-button:active img.button-img{
-          transform: translateY(var(--btn-press-translate)) scale(var(--btn-press-scale));
-        }
+                .main-menu-button:hover .main-menu-button-label,
+                .main-menu-button:focus-visible .main-menu-button-label {
+                    color: #f6e7b4;
+                }
 
-        /* 按钮文字：与主标题视觉一致，且根据按钮图片宽度自适应大小，始终居中在图片内部 */
-        .main-menu-button a{
-          position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-          white-space:nowrap;text-align:center;pointer-events:none;line-height:1;
-          /* 字体大小随按钮图片宽度缩放，但不超过主标题的大小，也有最小值保护 */
-          font-size: clamp(12px, calc(var(--btn-width) * 0.11), calc(var(--title-font-size) * 0.9));
-          color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,.45);
-          max-width: calc(var(--btn-width) * 0.9); overflow:hidden; text-overflow:ellipsis;
-          transition: color .12s ease, transform .12s cubic-bezier(.2,.9,.2,1);
-        }
-  /* Hover: 文字变为淡金色，增强主题氛围 */
-  .main-menu-button:hover a{ color: #f6e7b4; text-shadow: 0 2px 6px rgba(0,0,0,.45); }
-        .main-menu-button.pressed a, .main-menu-button:active a{ transform: translate(-50%, calc(-50% + var(--btn-press-translate))); }
+                .main-menu-button.pressed .button-img,
+                .main-menu-button:active .button-img {
+                    transform: translateY(4px) scale(0.985);
+                }
 
-        @media (max-width: 720px){
-          :root{
-            --btn-width: clamp(10.5rem, 42vw, 14rem);
-            --btn-font-scale: 0.74;
-            --btn-stack-overlap: -1px; /* 小屏同样略微放松 */
-            --btn-group-offset: 10vh;
-          }
-          .header{margin-bottom:52vh;}
-        }
+                .main-menu-button.pressed .main-menu-button-label,
+                .main-menu-button:active .main-menu-button-label {
+                    transform: translate(-50%, calc(-50% + 2px));
+                }
 
-        @media (min-width: 1600px){
-          :root{
-            --btn-width: 20rem;
-            --btn-font-scale: 0.8;
-            --btn-stack-overlap: 8px; /* 宽屏保持与默认一致的轻微贴合 */
-            --btn-group-offset: 7vh;
-          }
-        }
-      </style>
+                @media (max-width: 900px) and (pointer: coarse) {
+                    .menu-stack {
+                        --menu-width: min(25vw, 160px);
+                        --menu-scale: 0.82;
+                        left: clamp(64vw, 73vw, calc(100vw - 92px));
+                        top: 50%;
+                        max-height: 76vh;
+                    }
 
-      <div class="view main-menu-view">
-        <div class="bg" style="background-image:url('${bgImages[randomIndex]}');"></div>
+                    .menu-title {
+                        margin-bottom: 6px;
+                        font-size: clamp(16px, 2.5vw, 24px);
+                    }
 
-        <div class="menu-container">
-      <div class="header fade-in">
-        <a class="header-title flicker">夏夜唤灵簿</a>
-      </div>
+                    .main-menu-button-label {
+                        width: 68%;
+                        font-size: clamp(9px, 1.45vw, 12px);
+                    }
 
-          <div class="main-menu-button-group">
-            ${hasActiveGame ? `
-              <div class="main-menu-button" data-action="continue">
-                <img class="button-img" src="./assets/img/button.png" alt="">
-                <a>${L.get('ui.continue')}</a>
-              </div>
-            ` : ''}
-            <div class="main-menu-button" data-action="start">
-              <img class="button-img" src="./assets/img/button.png" alt="">
-              <a>${L.get('ui.start')}</a>
+                    .main-menu-button + .main-menu-button {
+                        margin-top: -12px;
+                    }
+                }
+
+                @media (max-height: 760px) {
+                    .menu-stack {
+                        --menu-scale: 0.88;
+                    }
+                }
+
+                @media (max-height: 540px) and (pointer: coarse) {
+                    .menu-stack {
+                        --menu-scale: 0.74;
+                        top: 49%;
+                    }
+                }
+            </style>
+
+            <div class="view main-menu-view">
+                <div class="bg" style="background-image:url('./assets/img/bgr/mainmenu.png');"></div>
+
+                <div class="menu-stack">
+                    <h1 class="menu-title">夏夜唤灵簿</h1>
+                    <div class="menu-actions">
+                        ${hasActiveGame ? `
+                            <button type="button" class="main-menu-button" data-action="continue">
+                                <img class="button-img" src="./assets/img/button.png" alt="">
+                                <span class="main-menu-button-label">${L.get('ui.continue')}</span>
+                            </button>
+                        ` : ''}
+                        <button type="button" class="main-menu-button" data-action="start">
+                            <img class="button-img" src="./assets/img/button.png" alt="">
+                            <span class="main-menu-button-label">${L.get('ui.start')}</span>
+                        </button>
+                        <button type="button" class="main-menu-button" data-action="load">
+                            <img class="button-img" src="./assets/img/button.png" alt="">
+                            <span class="main-menu-button-label">${L.get('ui.load')}</span>
+                        </button>
+                        <button type="button" class="main-menu-button" data-action="achievement">
+                            <img class="button-img" src="./assets/img/button.png" alt="">
+                            <span class="main-menu-button-label">${L.get('ui.achievement')}</span>
+                        </button>
+                        <button type="button" class="main-menu-button" data-action="settings">
+                            <img class="button-img" src="./assets/img/button.png" alt="">
+                            <span class="main-menu-button-label">设置</span>
+                        </button>
+                        <button type="button" class="main-menu-button" data-action="about">
+                            <img class="button-img" src="./assets/img/button.png" alt="">
+                            <span class="main-menu-button-label">${L.get('ui.about')}</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="main-menu-button" data-action="load">
-              <img class="button-img" src="./assets/img/button.png" alt="">
-              <a>${L.get('ui.load')}</a>
-            </div>
-            <div class="main-menu-button" data-action="achievement">
-              <img class="button-img" src="./assets/img/button.png" alt="">
-              <a>${L.get('ui.achievement')}</a>
-            </div>
-            <div class="main-menu-button" data-action="settings">
-              <img class="button-img" src="./assets/img/button.png" alt="">
-              <a>${L.get('设置') ?? '设置'}</a>
-            </div>
-            <div class="main-menu-button" data-action="about">
-              <img class="button-img" src="./assets/img/button.png" alt="">
-              <a>${L.get('ui.about')}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+        `;
 
-    const bgmMap = {
-      './assets/img/bgr/mainmenu.png': './assets/bgm/test.mp3',
-    };
-    engine.audioManager.playBgm(bgmMap[bgImages[randomIndex]], true);
-    // 动态调整主标题字体，使其始终完整显示在按钮宽度内（不省略），并保持中线对齐
-    (function attachTitleFit() {
-      const containerEl = container;
+        engine.audioManager.playBgm('./assets/bgm/test.mp3', true);
+    },
 
-      function fitTitleOnce() {
-        const titleEl = containerEl.querySelector('.header-title');
-        if (!titleEl) return;
+    attachEventListeners: (container, engine) => {
+        container.querySelectorAll('.main-menu-button').forEach((button) => {
+            bindInteractivePress(button, {
+                onHover: () => engine.audioManager.playSoundEffect('titleHover'),
+                onClick: async () => {
+                    engine.audioManager.playSoundEffect('titleClick');
+                    await engine.animation.play('fadeOutBlack');
 
-        // 可用宽度由 CSS 的 --btn-width 控制，titleEl.clientWidth 会反映实际像素宽度
-  // Use getBoundingClientRect to get actual rendered width (more reliable under browser zoom)
-  const available = Math.floor(titleEl.getBoundingClientRect().width) || 0;
-        if (available <= 0) return;
-
-        // 使用比例缩放方案：以首次计算得到的基准字号为 base，按 base 下内容实际宽度与可用宽度比例缩放
-        const cs = window.getComputedStyle(titleEl);
-        if (!containerEl.__titleBaseFontPx) {
-          containerEl.__titleBaseFontPx = Math.max(12, Math.round(parseFloat(cs.fontSize) || 24));
-        }
-        const basePx = containerEl.__titleBaseFontPx;
-
-        // 先把 font-size 暂设为 base 以测量基准下的内容宽度
-        titleEl.style.fontSize = basePx + 'px';
-        const contentWAtBase = Math.ceil(titleEl.scrollWidth || 0);
-
-        if (contentWAtBase <= available) {
-          // 基准字号就能容纳，使用基准字号（但尝试微幅放大）
-          let target = basePx;
-          const growPx = Math.floor(basePx * 0.2); // 放大约 10%
-          if (growPx > 0) {
-            const tryPx = basePx + growPx;
-            titleEl.style.fontSize = tryPx + 'px';
-            if (Math.ceil(titleEl.scrollWidth) <= available) target = tryPx;
-          }
-          titleEl.style.fontSize = target + 'px';
-        } else {
-          // 需要缩放：按比例计算目标字号，保证不会异常缩小（最小12px）
-          const scale = available / contentWAtBase;
-          let newPx = Math.max(12, Math.floor(basePx * scale));
-          // 尝试在 newPx 基础上微幅放大（6%），如果仍然 fit 则采用更大值
-          const growPx = Math.max(1, Math.floor(newPx * 0.06));
-          titleEl.style.fontSize = (newPx + growPx) + 'px';
-          if (Math.ceil(titleEl.scrollWidth) > available) {
-            // 放大会溢出，回退
-            titleEl.style.fontSize = newPx + 'px';
-          }
-        }
-      }
-
-      // 防抖函数
-      function debounce(fn, wait) {
-        let t = null;
-        return function () {
-          clearTimeout(t);
-          t = setTimeout(fn, wait);
-        };
-      }
-
-      // 移除已有的监听（如果有），避免重复注册
-      if (containerEl.__mainMenuTitleResizeHandler) {
-        window.removeEventListener('resize', containerEl.__mainMenuTitleResizeHandler);
-        containerEl.__mainMenuTitleResizeHandler = null;
-      }
-
-      const handler = debounce(() => {
-        // Recompute after CSS variables potentially changed
-        fitTitleOnce();
-      }, 80);
-      containerEl.__mainMenuTitleResizeHandler = handler;
-      window.addEventListener('resize', handler);
-
-      // 在初次渲染后稍微延迟执行一次，以等字体加载/CSS 生效
-      setTimeout(fitTitleOnce, 50);
-      // 也在 asset 图片加载后再尝试一次（按钮宽度可能受图片尺寸影响）
-      const imgs = containerEl.querySelectorAll('.main-menu-button img.button-img');
-      let loaded = 0;
-      if (imgs.length === 0) return;
-      imgs.forEach(img => {
-        if (img.complete) { loaded++; }
-        else {
-          img.addEventListener('load', () => {
-            loaded++;
-            if (loaded === imgs.length) {
-              // run twice to ensure layout stabilized
-              fitTitleOnce();
-              setTimeout(fitTitleOnce, 30);
-            }
-          });
-        }
-      });
-      // 如果图片已经都完成了，则再次运行
-      if (loaded === imgs.length) {
-        fitTitleOnce();
-        setTimeout(fitTitleOnce, 30);
-      }
-    })();
-  },
-
-  attachEventListeners: (container, engine) => {
-    const buttons = container.querySelectorAll('.main-menu-button');
-    buttons.forEach(button => {
-      // 鼠标移入：音效
-      button.addEventListener('mouseover', () => { engine.audioManager.playSoundEffect('titleHover'); });
-
-      // 按下/松开交互（鼠标/触摸/键盘）
-      const pressStart = (e) => {
-        button.classList.add('pressed');
-        engine.audioManager.playSoundEffect('titleClick');
-        // prevent text selection / native focus move
-        if (e && e.preventDefault) e.preventDefault();
-      };
-      const pressEnd = () => { button.classList.remove('pressed'); };
-
-      button.addEventListener('mousedown', pressStart);
-      button.addEventListener('mouseup', pressEnd);
-      button.addEventListener('mouseleave', pressEnd);
-      button.addEventListener('touchstart', pressStart, { passive: true });
-      button.addEventListener('touchend', pressEnd);
-
-      // 支持键盘的回车和空格触发（无阻止默认的 focus 行为）
-      button.setAttribute('tabindex', '0');
-      button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          pressStart(e);
-        }
-      });
-      button.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          pressEnd();
-          // 触发点击行为
-          button.click();
-        }
-      });
-
-      // 保持原来的 click 行为（导航/切换视图）
-      button.addEventListener('click', async (e) => {
-        const action = e.currentTarget.dataset.action;
-
-        await engine.animation.play('fadeOutBlack');
-
-        switch (action) {
-          case 'continue': engine.resumeGame(); break;
-          case 'start': engine.startNewGame(); break;
-          case 'load': engine.showView('Load', { from: 'MainMenu' }); break;
-          case 'settings': engine.showView('Settings', { from: 'MainMenu' }); break;
-          case 'achievement': engine.showView('Achievement'); break;
-          case 'about': engine.showView('About'); break;
-        }
-      });
-    });
-  }
+                    switch (button.dataset.action) {
+                        case 'continue':
+                            engine.resumeGame();
+                            break;
+                        case 'start':
+                            engine.startNewGame();
+                            break;
+                        case 'load':
+                            engine.showView('Load', { from: 'MainMenu' });
+                            break;
+                        case 'settings':
+                            engine.showView('Settings', { from: 'MainMenu' });
+                            break;
+                        case 'achievement':
+                            engine.showView('Achievement');
+                            break;
+                        case 'about':
+                            engine.showView('About');
+                            break;
+                    }
+                },
+            });
+        });
+    }
 };
 
 export default MainMenuView;

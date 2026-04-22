@@ -13,6 +13,11 @@ export default class AudioManager {
         this.currentVoice = '';
 
         this.currentBgm = '';
+        this.hasUserActivated = false;
+        this.pendingBgm = null;
+        this.pendingVoice = null;
+        this.boundUnlockAudio = this.unlockAudio.bind(this);
+        this.boundFlushPendingMedia = this.flushPendingMedia.bind(this);
         this.volumes = {
             gameBgm: 0.5,
             sfx: 0.5,
@@ -32,8 +37,72 @@ export default class AudioManager {
         this.sfxTitleHoverPlayer.src = './assets/bgm/holver.ogg';
         this.sfxTitleClickPlayer.src = './assets/bgm/click.ogg';
         this.sfxSysYesPlayer.src = './assets/bgm/click.ogg';
+        this.voicePlayer.preload = 'none';
+        this.bgmPlayer.preload = 'none';
         
         this.applyVolumes();
+        this.bindUserActivation();
+        document.addEventListener('visibilitychange', this.boundFlushPendingMedia, { passive: true });
+    }
+
+    bindUserActivation() {
+        ['pointerdown', 'touchend', 'keydown'].forEach((eventName) => {
+            document.addEventListener(eventName, this.boundUnlockAudio, { once: true, passive: true });
+        });
+    }
+
+    markUserActivated() {
+        if (!this.hasUserActivated) {
+            this.unlockAudio();
+        }
+    }
+
+    unlockAudio() {
+        this.hasUserActivated = true;
+
+        [this.bgmPlayer, this.voicePlayer, this.sfxHoverPlayer, this.sfxClickPlayer, this.sfxTitleHoverPlayer, this.sfxTitleClickPlayer, this.sfxSysYesPlayer]
+            .filter(Boolean)
+            .forEach((player) => {
+                try {
+                    player.muted = true;
+                    const playAttempt = player.play();
+                    if (playAttempt?.catch) {
+                        playAttempt.catch(() => {});
+                    }
+                    player.pause();
+                    player.currentTime = 0;
+                    player.muted = false;
+                } catch (error) {
+                    player.muted = false;
+                }
+            });
+
+        this.flushPendingMedia();
+    }
+
+    tryPlay(player, onBlocked) {
+        const playAttempt = player.play();
+        if (playAttempt?.catch) {
+            playAttempt.catch(() => {
+                if (onBlocked) onBlocked();
+            });
+        }
+    }
+
+    flushPendingMedia() {
+        if (document.visibilityState === 'hidden') return;
+
+        if (this.pendingBgm) {
+            const { src, isIndex } = this.pendingBgm;
+            this.pendingBgm = null;
+            this.playBgm(src, isIndex);
+        }
+
+        if (this.pendingVoice) {
+            const src = this.pendingVoice;
+            this.pendingVoice = null;
+            this.playVoice(src);
+        }
     }
     
     applyVolumes() {
@@ -73,12 +142,16 @@ export default class AudioManager {
         this.bgmPlayer.src = src;
         this.bgmPlayer.dataset.isIndex = isIndex;
         this.bgmPlayer.volume = isIndex ? this.volumes.indexBgm : this.volumes.gameBgm;
-        this.bgmPlayer.play().catch(e => console.warn("BGM自动播放被浏览器阻止。"));
+        this.tryPlay(this.bgmPlayer, () => {
+            this.pendingBgm = { src, isIndex };
+            console.warn("BGM自动播放被浏览器阻止。");
+        });
     }
     
     stopBgm() {
         this.bgmPlayer.pause();
         this.currentBgm = '';
+        this.pendingBgm = null;
     }
 
     playVoice(src) {
@@ -88,7 +161,10 @@ export default class AudioManager {
 
         this.currentVoice = src;
         this.voicePlayer.src = src;
-        this.voicePlayer.play().catch(e => console.warn("语音自动播放被浏览器阻止。"));
+        this.tryPlay(this.voicePlayer, () => {
+            this.pendingVoice = src;
+            console.warn("语音自动播放被浏览器阻止。");
+        });
     }
 
     stopVoice() {
@@ -97,6 +173,7 @@ export default class AudioManager {
             this.voicePlayer.currentTime = 0;
         }
         this.currentVoice = '';
+        this.pendingVoice = null;
     }
     
     playSoundEffect(type) {
@@ -110,7 +187,7 @@ export default class AudioManager {
         }
         if (player) {
             player.currentTime = 0;
-            player.play().catch(e => {});
+            this.tryPlay(player);
         }
     }
 }

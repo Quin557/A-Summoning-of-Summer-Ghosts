@@ -27,9 +27,20 @@ export class InputHandler {
     _setKey(code, value) {
         switch (code) {
             case 'KeyA': this.keys.ArrowLeft = value; break;
+            case 'ArrowLeft': this.keys.ArrowLeft = value; break;
             case 'KeyD': this.keys.ArrowRight = value; break;
+            case 'ArrowRight': this.keys.ArrowRight = value; break;
             case 'KeyW': this.keys.Space = value; break;
+            case 'Space': this.keys.Space = value; break;
+            case 'ArrowUp': this.keys.Space = value; break;
             case 'KeyJ': this.keys.Attack = value; break;
+            case 'Enter': this.keys.Attack = value; break;
+        }
+    }
+
+    setVirtualKey(key, value) {
+        if (Object.prototype.hasOwnProperty.call(this.keys, key)) {
+            this.keys[key] = value;
         }
     }
 

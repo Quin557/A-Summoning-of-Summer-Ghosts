@@ -26,7 +26,7 @@ const AboutView = {
                     background: none;
                     border: none;
                     cursor: pointer;
-                    font-family: 'lilyshow','FangSong','仿宋','SimSun',sans-serif;
+                    font-family: var(--font-button);
                     padding: 0;
                 }
 
@@ -76,6 +76,49 @@ const AboutView = {
                 /* 在更广泛的窄屏或横向无法容纳多图时，强制从上到下单列排列 */
                 @media (max-width: 640px) {
                     .gallery.row1, .gallery.row2 { grid-template-columns: 1fr !important; justify-items: center; }
+                }
+                body.compact-landscape .navbar {
+                    height: 74px;
+                    padding: calc(var(--safe-top, 0px) + 6px) 12px 0;
+                }
+                body.compact-landscape .menu-button {
+                    width: min(28vw, 116px);
+                }
+                body.compact-landscape .menu-button img {
+                    width: 100%;
+                }
+                body.compact-landscape .menu-button span {
+                    font-size: clamp(10px, 1.5vw, 12px);
+                }
+                body.compact-landscape .about-content {
+                    max-height: calc(var(--app-vh, 1vh) * 100 - 88px);
+                    padding: 4px 4px 10px;
+                }
+                body.compact-landscape .about-content-wrapper {
+                    --about-scale: calc(var(--mobile-gallery-scale) * 0.9);
+                    transform: scale(var(--about-scale));
+                    transform-origin: top center;
+                    width: calc(100% / var(--about-scale));
+                    margin-left: calc((100% - (100% / var(--about-scale))) / 2);
+                }
+                @media (max-width: 900px) and (pointer: coarse) {
+                    .navbar {
+                        height: 74px;
+                        padding: calc(var(--safe-top, 0px) + 6px) 12px 0;
+                    }
+                    .menu-button {
+                        width: min(28vw, 116px);
+                    }
+                    .menu-button img {
+                        width: 100%;
+                    }
+                    .menu-button span {
+                        font-size: clamp(10px, 1.5vw, 12px);
+                    }
+                    .about-content {
+                        max-height: calc(var(--app-vh, 1vh) * 100 - 88px);
+                        padding: 4px 4px 10px;
+                    }
                 }
             </style>
             <div class="view about-view">

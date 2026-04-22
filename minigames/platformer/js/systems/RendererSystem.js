@@ -7,6 +7,8 @@ export class RendererSystem {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.camera = new Camera(this.canvas.width, this.canvas.height);
+        this.isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+        this.zoom = this.isTouchDevice ? 0.78 : 1;
 
         this.raindrops = [];
         this.numRaindrops = 200;
@@ -69,8 +71,9 @@ export class RendererSystem {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
 
-        this.camera.viewportWidth = this.canvas.width;
-        this.camera.viewportHeight = this.canvas.height;
+        this.zoom = window.matchMedia('(pointer: coarse)').matches ? 0.78 : 1;
+        this.camera.viewportWidth = this.canvas.width / this.zoom;
+        this.camera.viewportHeight = this.canvas.height / this.zoom;
     }
 
     render(scene) {
@@ -84,6 +87,7 @@ export class RendererSystem {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
         this.ctx.save();
+        this.ctx.scale(this.zoom, this.zoom);
         this.ctx.translate(-this.camera.x, -this.camera.y);
 
         if (tilemap) {

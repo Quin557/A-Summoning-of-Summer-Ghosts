@@ -5,6 +5,8 @@ export default class SentencePrinter {
 		this.ptr = 0;
 		this.text = null;
 		this.intervalId = null;
+		this.onUpdate = null;
+		this.onComplete = null;
 	}
 
 	startInterval() {
@@ -29,10 +31,12 @@ export default class SentencePrinter {
 	putNextChar() {
 		if (this.hasFinished()) {
 			this.stopInterval();
+			if (typeof this.onComplete === 'function') this.onComplete(this.text || '');
 			return false;
 		}
 		this.element.textContent += this.text[this.ptr];
 		this.ptr++;
+		if (typeof this.onUpdate === 'function') this.onUpdate(this.element.textContent);
 		return true;
 	}
 
@@ -40,6 +44,7 @@ export default class SentencePrinter {
 		this.text = textToPrint;
 		this.element.textContent = '';
 		this.ptr = 0;
+		if (typeof this.onUpdate === 'function') this.onUpdate('');
 		this.startInterval();
 	}
 
@@ -48,6 +53,8 @@ export default class SentencePrinter {
 		if (this.text) {
 		    this.element.textContent = this.text;
             this.ptr = this.text.length;
+			if (typeof this.onUpdate === 'function') this.onUpdate(this.text);
+			if (typeof this.onComplete === 'function') this.onComplete(this.text);
         }
 	}
 }

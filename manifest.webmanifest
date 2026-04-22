@@ -6,6 +6,7 @@
   "start_url": "/Summoning-of-Summer-Ghosts.github.io/?source=pwa",
   "scope": "/Summoning-of-Summer-Ghosts.github.io/",
   "display": "standalone",
+  "orientation": "landscape",
   "background_color": "#111111",
   "theme_color": "#111111",
   "icons": [

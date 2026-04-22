@@ -61,7 +61,7 @@ const AchievementView = {
                     background: none;
                     border: none;
                     cursor: pointer;
-                    font-family: 'lilyshow','FangSong','仿宋','SimSun',sans-serif;
+                    font-family: var(--font-button);
                     padding: 0;
                 }
 
@@ -79,18 +79,20 @@ const AchievementView = {
                 }
 
                 .achievement-grid-container {
-                    flex: 1;
-                    overflow-y: auto;
                     padding: 20px 40px;
                     box-sizing: border-box;
                     display: grid;
                     grid-template-columns: repeat(4, 1fr); /* 每行固定 4 个格子 */
                     gap: 25px;
                     justify-items: center;
+                }
+                .achievement-grid-viewport {
+                    flex: 1;
+                    overflow-y: auto;
                     -ms-overflow-style: none;
                     scrollbar-width: none;
                 }
-                .achievement-grid-container::-webkit-scrollbar { display: none; }
+                .achievement-grid-viewport::-webkit-scrollbar { display: none; }
 
                 .achievement-item {
                     background-color: rgba(0, 0, 0, 0.4);
@@ -159,6 +161,52 @@ const AchievementView = {
                     color: #ccc;
                     line-height: 1.4;
                 }
+                body.compact-landscape .achievement-view {
+                    min-height: calc(var(--app-vh, 1vh) * 100);
+                }
+                body.compact-landscape .navbar {
+                    height: 74px;
+                    padding: calc(var(--safe-top, 0px) + 6px) 12px 0;
+                }
+                body.compact-landscape .menu-button {
+                    width: min(34vw, 140px);
+                }
+                body.compact-landscape .menu-button img {
+                    width: 100%;
+                }
+                body.compact-landscape .menu-button span {
+                    font-size: clamp(12px, 2.2vw, 16px);
+                }
+                body.compact-landscape .achievement-grid-container {
+                    --achievement-scale: var(--mobile-ui-scale);
+                    width: calc(100% / var(--achievement-scale));
+                    margin-left: calc((100% - (100% / var(--achievement-scale))) / 2);
+                    padding: 12px 20px 40px;
+                    transform: scale(var(--achievement-scale));
+                    transform-origin: top center;
+                    gap: 22px;
+                }
+                body.compact-landscape .achievement-grid-viewport {
+                    padding-bottom: 56px;
+                }
+                @media (max-width: 900px) and (pointer: coarse) {
+                    .achievement-view {
+                        min-height: calc(var(--app-vh, 1vh) * 100);
+                    }
+                    .navbar {
+                        height: 74px;
+                        padding: calc(var(--safe-top, 0px) + 6px) 12px 0;
+                    }
+                    .menu-button {
+                        width: min(34vw, 140px);
+                    }
+                    .menu-button img {
+                        width: 100%;
+                    }
+                    .menu-button span {
+                        font-size: clamp(12px, 2.2vw, 16px);
+                    }
+                }
             </style>
 
             <div class="view achievement-view">
@@ -176,8 +224,10 @@ const AchievementView = {
                     </button>
                 </nav>
 
-                <div class="achievement-grid-container">
-                    ${itemsHTML}
+                <div class="achievement-grid-viewport">
+                    <div class="achievement-grid-container">
+                        ${itemsHTML}
+                    </div>
                 </div>
             </div>
         `;

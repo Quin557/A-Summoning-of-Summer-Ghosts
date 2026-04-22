@@ -1,0 +1,2520 @@
+{
+  "generated_from": "data/story.json + source static reference scan",
+  "top_referenced_img": [
+    {
+      "path": "assets/img/menuBox/paper2.png",
+      "scope": "img",
+      "size_bytes": 9185147,
+      "size_mb": 8.76,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 3,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "js/views/LoadView.js",
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/大门1.png",
+      "scope": "img",
+      "size_bytes": 6349731,
+      "size_mb": 6.06,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/樱花2.png",
+      "scope": "img",
+      "size_bytes": 6308474,
+      "size_mb": 6.02,
+      "dynamic_ref_count": 6,
+      "static_ref_count": 2,
+      "total_ref_count": 8,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/饰品店.png",
+      "scope": "img",
+      "size_bytes": 5876765,
+      "size_mb": 5.6,
+      "dynamic_ref_count": 5,
+      "static_ref_count": 2,
+      "total_ref_count": 7,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/市集3.png",
+      "scope": "img",
+      "size_bytes": 5809552,
+      "size_mb": 5.54,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/俯瞰城市1.png",
+      "scope": "img",
+      "size_bytes": 5805272,
+      "size_mb": 5.54,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 2,
+      "total_ref_count": 4,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/烟花7.png",
+      "scope": "img",
+      "size_bytes": 5695388,
+      "size_mb": 5.43,
+      "dynamic_ref_count": 3,
+      "static_ref_count": 2,
+      "total_ref_count": 5,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/烟花4.png",
+      "scope": "img",
+      "size_bytes": 5674522,
+      "size_mb": 5.41,
+      "dynamic_ref_count": 12,
+      "static_ref_count": 2,
+      "total_ref_count": 14,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/郊区.png",
+      "scope": "img",
+      "size_bytes": 5556535,
+      "size_mb": 5.3,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市郊区2.png",
+      "scope": "img",
+      "size_bytes": 5443213,
+      "size_mb": 5.19,
+      "dynamic_ref_count": 17,
+      "static_ref_count": 2,
+      "total_ref_count": 19,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市油画.png",
+      "scope": "img",
+      "size_bytes": 5415732,
+      "size_mb": 5.16,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/补充34.png",
+      "scope": "img",
+      "size_bytes": 5385872,
+      "size_mb": 5.14,
+      "dynamic_ref_count": 5,
+      "static_ref_count": 2,
+      "total_ref_count": 7,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市落日2.png",
+      "scope": "img",
+      "size_bytes": 5340590,
+      "size_mb": 5.09,
+      "dynamic_ref_count": 15,
+      "static_ref_count": 2,
+      "total_ref_count": 17,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/地铁.png",
+      "scope": "img",
+      "size_bytes": 5317474,
+      "size_mb": 5.07,
+      "dynamic_ref_count": 5,
+      "static_ref_count": 2,
+      "total_ref_count": 7,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市与花火1.png",
+      "scope": "img",
+      "size_bytes": 5280249,
+      "size_mb": 5.04,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/市集1.png",
+      "scope": "img",
+      "size_bytes": 5246292,
+      "size_mb": 5.0,
+      "dynamic_ref_count": 12,
+      "static_ref_count": 2,
+      "total_ref_count": 14,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/图书馆5.png",
+      "scope": "img",
+      "size_bytes": 5240026,
+      "size_mb": 5.0,
+      "dynamic_ref_count": 10,
+      "static_ref_count": 2,
+      "total_ref_count": 12,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/烟花2.png",
+      "scope": "img",
+      "size_bytes": 5198306,
+      "size_mb": 4.96,
+      "dynamic_ref_count": 6,
+      "static_ref_count": 2,
+      "total_ref_count": 8,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/烟花6.png",
+      "scope": "img",
+      "size_bytes": 5131013,
+      "size_mb": 4.89,
+      "dynamic_ref_count": 4,
+      "static_ref_count": 2,
+      "total_ref_count": 6,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/报刊亭.png",
+      "scope": "img",
+      "size_bytes": 5078207,
+      "size_mb": 4.84,
+      "dynamic_ref_count": 10,
+      "static_ref_count": 2,
+      "total_ref_count": 12,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/烟花1.png",
+      "scope": "img",
+      "size_bytes": 5001593,
+      "size_mb": 4.77,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/地铁站.png",
+      "scope": "img",
+      "size_bytes": 4955041,
+      "size_mb": 4.73,
+      "dynamic_ref_count": 7,
+      "static_ref_count": 1,
+      "total_ref_count": 8,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/杂货铺.png",
+      "scope": "img",
+      "size_bytes": 4949926,
+      "size_mb": 4.72,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/教学楼3.png",
+      "scope": "img",
+      "size_bytes": 4874484,
+      "size_mb": 4.65,
+      "dynamic_ref_count": 6,
+      "static_ref_count": 1,
+      "total_ref_count": 7,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/小溪2.png",
+      "scope": "img",
+      "size_bytes": 4867561,
+      "size_mb": 4.64,
+      "dynamic_ref_count": 6,
+      "static_ref_count": 1,
+      "total_ref_count": 7,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/画展2.png",
+      "scope": "img",
+      "size_bytes": 4862593,
+      "size_mb": 4.64,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/樱花.png",
+      "scope": "img",
+      "size_bytes": 4853015,
+      "size_mb": 4.63,
+      "dynamic_ref_count": 11,
+      "static_ref_count": 1,
+      "total_ref_count": 12,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/黄昏女孩.png",
+      "scope": "img",
+      "size_bytes": 4826332,
+      "size_mb": 4.6,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 1,
+      "total_ref_count": 1,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/游泳馆.png",
+      "scope": "img",
+      "size_bytes": 4826323,
+      "size_mb": 4.6,
+      "dynamic_ref_count": 3,
+      "static_ref_count": 1,
+      "total_ref_count": 4,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/公园.png",
+      "scope": "img",
+      "size_bytes": 4799313,
+      "size_mb": 4.58,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市郊区3.png",
+      "scope": "img",
+      "size_bytes": 4771479,
+      "size_mb": 4.55,
+      "dynamic_ref_count": 9,
+      "static_ref_count": 1,
+      "total_ref_count": 10,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/原野2.png",
+      "scope": "img",
+      "size_bytes": 4757962,
+      "size_mb": 4.54,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市夜空3.png",
+      "scope": "img",
+      "size_bytes": 4749976,
+      "size_mb": 4.53,
+      "dynamic_ref_count": 7,
+      "static_ref_count": 1,
+      "total_ref_count": 8,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/咖啡馆.png",
+      "scope": "img",
+      "size_bytes": 4682017,
+      "size_mb": 4.47,
+      "dynamic_ref_count": 13,
+      "static_ref_count": 1,
+      "total_ref_count": 14,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/俯瞰城市5.png",
+      "scope": "img",
+      "size_bytes": 4664740,
+      "size_mb": 4.45,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/梦境2.png",
+      "scope": "img",
+      "size_bytes": 4645270,
+      "size_mb": 4.43,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/补充9.png",
+      "scope": "img",
+      "size_bytes": 4321958,
+      "size_mb": 4.12,
+      "dynamic_ref_count": 4,
+      "static_ref_count": 1,
+      "total_ref_count": 5,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/城市街道1.png",
+      "scope": "img",
+      "size_bytes": 4104283,
+      "size_mb": 3.91,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/教学楼1.png",
+      "scope": "img",
+      "size_bytes": 3997596,
+      "size_mb": 3.81,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 1,
+      "total_ref_count": 1,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/img/bgr/舞台3.png",
+      "scope": "img",
+      "size_bytes": 3940929,
+      "size_mb": 3.76,
+      "dynamic_ref_count": 21,
+      "static_ref_count": 1,
+      "total_ref_count": 22,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    }
+  ],
+  "top_referenced_bgm": [
+    {
+      "path": "assets/bgm/柔和之光.mp3",
+      "scope": "bgm",
+      "size_bytes": 5780104,
+      "size_mb": 5.51,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/test.mp3",
+      "scope": "bgm",
+      "size_bytes": 5779667,
+      "size_mb": 5.51,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 3,
+      "total_ref_count": 4,
+      "referenced": true,
+      "static_ref_sources": [
+        "js/views/MainMenuView.js",
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/卡农.mp3",
+      "scope": "bgm",
+      "size_bytes": 5626863,
+      "size_mb": 5.37,
+      "dynamic_ref_count": 36,
+      "static_ref_count": 2,
+      "total_ref_count": 38,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/雨后夏日.mp3",
+      "scope": "bgm",
+      "size_bytes": 5521359,
+      "size_mb": 5.27,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 2,
+      "total_ref_count": 4,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/少女绮想曲.mp3",
+      "scope": "bgm",
+      "size_bytes": 5358017,
+      "size_mb": 5.11,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/生命线.mp3",
+      "scope": "bgm",
+      "size_bytes": 5013537,
+      "size_mb": 4.78,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/旅程.mp3",
+      "scope": "bgm",
+      "size_bytes": 5006879,
+      "size_mb": 4.77,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 2,
+      "total_ref_count": 4,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/风之谷.mp3",
+      "scope": "bgm",
+      "size_bytes": 4943726,
+      "size_mb": 4.71,
+      "dynamic_ref_count": 6,
+      "static_ref_count": 2,
+      "total_ref_count": 8,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/花女.mp3",
+      "scope": "bgm",
+      "size_bytes": 4838392,
+      "size_mb": 4.61,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/惊鸿.mp3",
+      "scope": "bgm",
+      "size_bytes": 4800356,
+      "size_mb": 4.58,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/夏天的呼唤.mp3",
+      "scope": "bgm",
+      "size_bytes": 4749382,
+      "size_mb": 4.53,
+      "dynamic_ref_count": 20,
+      "static_ref_count": 2,
+      "total_ref_count": 22,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/去月球.mp3",
+      "scope": "bgm",
+      "size_bytes": 4741035,
+      "size_mb": 4.52,
+      "dynamic_ref_count": 27,
+      "static_ref_count": 2,
+      "total_ref_count": 29,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/乌托邦.mp3",
+      "scope": "bgm",
+      "size_bytes": 4685419,
+      "size_mb": 4.47,
+      "dynamic_ref_count": 9,
+      "static_ref_count": 2,
+      "total_ref_count": 11,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/星际穿越.mp3",
+      "scope": "bgm",
+      "size_bytes": 4616906,
+      "size_mb": 4.4,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/夏天花散了.mp3",
+      "scope": "bgm",
+      "size_bytes": 4532888,
+      "size_mb": 4.32,
+      "dynamic_ref_count": 37,
+      "static_ref_count": 2,
+      "total_ref_count": 39,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/儿时的夏日.mp3",
+      "scope": "bgm",
+      "size_bytes": 4400395,
+      "size_mb": 4.2,
+      "dynamic_ref_count": 14,
+      "static_ref_count": 2,
+      "total_ref_count": 16,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/花之舞.mp3",
+      "scope": "bgm",
+      "size_bytes": 4343565,
+      "size_mb": 4.14,
+      "dynamic_ref_count": 33,
+      "static_ref_count": 2,
+      "total_ref_count": 35,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/烟花闪烁的夜晚.mp3",
+      "scope": "bgm",
+      "size_bytes": 4334781,
+      "size_mb": 4.13,
+      "dynamic_ref_count": 16,
+      "static_ref_count": 2,
+      "total_ref_count": 18,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/一天一天.mp3",
+      "scope": "bgm",
+      "size_bytes": 4329415,
+      "size_mb": 4.13,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 2,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/秋日女孩.mp3",
+      "scope": "bgm",
+      "size_bytes": 4209430,
+      "size_mb": 4.01,
+      "dynamic_ref_count": 74,
+      "static_ref_count": 2,
+      "total_ref_count": 76,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/bgm/千本樱.mp3",
+      "scope": "bgm",
+      "size_bytes": 4173876,
+      "size_mb": 3.98,
+      "dynamic_ref_count": 20,
+      "static_ref_count": 1,
+      "total_ref_count": 21,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/海鸣.mp3",
+      "scope": "bgm",
+      "size_bytes": 4139240,
+      "size_mb": 3.95,
+      "dynamic_ref_count": 30,
+      "static_ref_count": 1,
+      "total_ref_count": 31,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/花之泪.mp3",
+      "scope": "bgm",
+      "size_bytes": 4134588,
+      "size_mb": 3.94,
+      "dynamic_ref_count": 19,
+      "static_ref_count": 1,
+      "total_ref_count": 20,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/浮光.mp3",
+      "scope": "bgm",
+      "size_bytes": 4128894,
+      "size_mb": 3.94,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/城市孤独.mp3",
+      "scope": "bgm",
+      "size_bytes": 4051371,
+      "size_mb": 3.86,
+      "dynamic_ref_count": 8,
+      "static_ref_count": 1,
+      "total_ref_count": 9,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/云流海.mp3",
+      "scope": "bgm",
+      "size_bytes": 4043476,
+      "size_mb": 3.86,
+      "dynamic_ref_count": 51,
+      "static_ref_count": 1,
+      "total_ref_count": 52,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/日落橘风.mp3",
+      "scope": "bgm",
+      "size_bytes": 4019192,
+      "size_mb": 3.83,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/亡灵序曲.mp3",
+      "scope": "bgm",
+      "size_bytes": 3931898,
+      "size_mb": 3.75,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 1,
+      "total_ref_count": 1,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/走马灯.mp3",
+      "scope": "bgm",
+      "size_bytes": 3894254,
+      "size_mb": 3.71,
+      "dynamic_ref_count": 40,
+      "static_ref_count": 1,
+      "total_ref_count": 41,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/花上亡灵.mp3",
+      "scope": "bgm",
+      "size_bytes": 3840116,
+      "size_mb": 3.66,
+      "dynamic_ref_count": 31,
+      "static_ref_count": 1,
+      "total_ref_count": 32,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/玫瑰少年.mp3",
+      "scope": "bgm",
+      "size_bytes": 3838264,
+      "size_mb": 3.66,
+      "dynamic_ref_count": 48,
+      "static_ref_count": 1,
+      "total_ref_count": 49,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/阳光洒落在叶间.mp3",
+      "scope": "bgm",
+      "size_bytes": 3828588,
+      "size_mb": 3.65,
+      "dynamic_ref_count": 33,
+      "static_ref_count": 1,
+      "total_ref_count": 34,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/短暂的回忆.mp3",
+      "scope": "bgm",
+      "size_bytes": 3773040,
+      "size_mb": 3.6,
+      "dynamic_ref_count": 23,
+      "static_ref_count": 1,
+      "total_ref_count": 24,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/云村的风.mp3",
+      "scope": "bgm",
+      "size_bytes": 3724546,
+      "size_mb": 3.55,
+      "dynamic_ref_count": 2,
+      "static_ref_count": 1,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/夏夜烟火.mp3",
+      "scope": "bgm",
+      "size_bytes": 3663519,
+      "size_mb": 3.49,
+      "dynamic_ref_count": 24,
+      "static_ref_count": 1,
+      "total_ref_count": 25,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/青石巷.mp3",
+      "scope": "bgm",
+      "size_bytes": 3641360,
+      "size_mb": 3.47,
+      "dynamic_ref_count": 32,
+      "static_ref_count": 1,
+      "total_ref_count": 33,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/穿庭入室.mp3",
+      "scope": "bgm",
+      "size_bytes": 3613796,
+      "size_mb": 3.45,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 1,
+      "total_ref_count": 1,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/繁华的寂静.mp3",
+      "scope": "bgm",
+      "size_bytes": 3530619,
+      "size_mb": 3.37,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 1,
+      "total_ref_count": 1,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/云下梦魇.mp3",
+      "scope": "bgm",
+      "size_bytes": 3519367,
+      "size_mb": 3.36,
+      "dynamic_ref_count": 56,
+      "static_ref_count": 1,
+      "total_ref_count": 57,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/bgm/溺悬.mp3",
+      "scope": "bgm",
+      "size_bytes": 3467624,
+      "size_mb": 3.31,
+      "dynamic_ref_count": 42,
+      "static_ref_count": 1,
+      "total_ref_count": 43,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    }
+  ],
+  "top_referenced_voice": [
+    {
+      "path": "assets/voice/40219.mp3",
+      "scope": "voice",
+      "size_bytes": 994524,
+      "size_mb": 0.95,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30193.mp3",
+      "scope": "voice",
+      "size_bytes": 939804,
+      "size_mb": 0.9,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30516.mp3",
+      "scope": "voice",
+      "size_bytes": 877596,
+      "size_mb": 0.84,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/20511.mp3",
+      "scope": "voice",
+      "size_bytes": 853404,
+      "size_mb": 0.81,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40188.mp3",
+      "scope": "voice",
+      "size_bytes": 852828,
+      "size_mb": 0.81,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30201.mp3",
+      "scope": "voice",
+      "size_bytes": 839580,
+      "size_mb": 0.8,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30296.mp3",
+      "scope": "voice",
+      "size_bytes": 837852,
+      "size_mb": 0.8,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40327.mp3",
+      "scope": "voice",
+      "size_bytes": 810204,
+      "size_mb": 0.77,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40271.mp3",
+      "scope": "voice",
+      "size_bytes": 787740,
+      "size_mb": 0.75,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30326.mp3",
+      "scope": "voice",
+      "size_bytes": 764700,
+      "size_mb": 0.73,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30523.mp3",
+      "scope": "voice",
+      "size_bytes": 761244,
+      "size_mb": 0.73,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40181.mp3",
+      "scope": "voice",
+      "size_bytes": 757788,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30216.mp3",
+      "scope": "voice",
+      "size_bytes": 756060,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40270.mp3",
+      "scope": "voice",
+      "size_bytes": 755484,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40354.mp3",
+      "scope": "voice",
+      "size_bytes": 755484,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30191.mp3",
+      "scope": "voice",
+      "size_bytes": 754332,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30413.mp3",
+      "scope": "voice",
+      "size_bytes": 746844,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30288.mp3",
+      "scope": "voice",
+      "size_bytes": 745692,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/30442.mp3",
+      "scope": "voice",
+      "size_bytes": 745116,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40225.mp3",
+      "scope": "voice",
+      "size_bytes": 745116,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 2,
+      "total_ref_count": 3,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json",
+        "reports/asset-audit.md"
+      ]
+    },
+    {
+      "path": "assets/voice/40206.mp3",
+      "scope": "voice",
+      "size_bytes": 733596,
+      "size_mb": 0.7,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40169.mp3",
+      "scope": "voice",
+      "size_bytes": 723804,
+      "size_mb": 0.69,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40285.mp3",
+      "scope": "voice",
+      "size_bytes": 722076,
+      "size_mb": 0.69,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40091.mp3",
+      "scope": "voice",
+      "size_bytes": 718044,
+      "size_mb": 0.68,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30284.mp3",
+      "scope": "voice",
+      "size_bytes": 712284,
+      "size_mb": 0.68,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/50318.mp3",
+      "scope": "voice",
+      "size_bytes": 700188,
+      "size_mb": 0.67,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40322.mp3",
+      "scope": "voice",
+      "size_bytes": 692124,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/50083.mp3",
+      "scope": "voice",
+      "size_bytes": 690972,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30281.mp3",
+      "scope": "voice",
+      "size_bytes": 689244,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40343.mp3",
+      "scope": "voice",
+      "size_bytes": 688092,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30417.mp3",
+      "scope": "voice",
+      "size_bytes": 687516,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30511.mp3",
+      "scope": "voice",
+      "size_bytes": 686364,
+      "size_mb": 0.65,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/1120.mp3",
+      "scope": "voice",
+      "size_bytes": 683484,
+      "size_mb": 0.65,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/20798.mp3",
+      "scope": "voice",
+      "size_bytes": 681756,
+      "size_mb": 0.65,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40223.mp3",
+      "scope": "voice",
+      "size_bytes": 680028,
+      "size_mb": 0.65,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30075.mp3",
+      "scope": "voice",
+      "size_bytes": 676787,
+      "size_mb": 0.65,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30194.mp3",
+      "scope": "voice",
+      "size_bytes": 674268,
+      "size_mb": 0.64,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40086.mp3",
+      "scope": "voice",
+      "size_bytes": 672540,
+      "size_mb": 0.64,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/30252.mp3",
+      "scope": "voice",
+      "size_bytes": 671964,
+      "size_mb": 0.64,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    },
+    {
+      "path": "assets/voice/40340.mp3",
+      "scope": "voice",
+      "size_bytes": 669084,
+      "size_mb": 0.64,
+      "dynamic_ref_count": 1,
+      "static_ref_count": 1,
+      "total_ref_count": 2,
+      "referenced": true,
+      "static_ref_sources": [
+        "reports/asset-audit.json"
+      ]
+    }
+  ],
+  "top_unreferenced": [
+    {
+      "path": "assets/bgm/存在.mp3",
+      "scope": "bgm",
+      "size_bytes": 3187041,
+      "size_mb": 3.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/花海.mp3",
+      "scope": "bgm",
+      "size_bytes": 3183524,
+      "size_mb": 3.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/盗乐行.mp3",
+      "scope": "bgm",
+      "size_bytes": 3171187,
+      "size_mb": 3.02,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/风止了.mp3",
+      "scope": "bgm",
+      "size_bytes": 3128942,
+      "size_mb": 2.98,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/初夏.mp3",
+      "scope": "bgm",
+      "size_bytes": 2964685,
+      "size_mb": 2.83,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/北冥.mp3",
+      "scope": "bgm",
+      "size_bytes": 2953064,
+      "size_mb": 2.82,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/起风了.mp3",
+      "scope": "bgm",
+      "size_bytes": 2791406,
+      "size_mb": 2.66,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/魔幻之旅.mp3",
+      "scope": "bgm",
+      "size_bytes": 2722726,
+      "size_mb": 2.6,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/惊蛰.mp3",
+      "scope": "bgm",
+      "size_bytes": 2611981,
+      "size_mb": 2.49,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/苏醒在起舞.mp3",
+      "scope": "bgm",
+      "size_bytes": 2412238,
+      "size_mb": 2.3,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/安静的午后.mp3",
+      "scope": "bgm",
+      "size_bytes": 2389174,
+      "size_mb": 2.28,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/风华正茂.mp3",
+      "scope": "bgm",
+      "size_bytes": 2369554,
+      "size_mb": 2.26,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/秘密与告别.mp3",
+      "scope": "bgm",
+      "size_bytes": 2245467,
+      "size_mb": 2.14,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/无仙.mp3",
+      "scope": "bgm",
+      "size_bytes": 2176414,
+      "size_mb": 2.08,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/菊次郎的夏天.mp3",
+      "scope": "bgm",
+      "size_bytes": 2161008,
+      "size_mb": 2.06,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/你与我之歌.mp3",
+      "scope": "bgm",
+      "size_bytes": 2068257,
+      "size_mb": 1.97,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/夜空的苏醒.mp3",
+      "scope": "bgm",
+      "size_bytes": 1757319,
+      "size_mb": 1.68,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/雪落下的车站.mp3",
+      "scope": "bgm",
+      "size_bytes": 1623517,
+      "size_mb": 1.55,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/沉寂在空白.mp3",
+      "scope": "bgm",
+      "size_bytes": 1540795,
+      "size_mb": 1.47,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/饭馆.png",
+      "scope": "img",
+      "size_bytes": 1199674,
+      "size_mb": 1.14,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/俯瞰城市6.png",
+      "scope": "img",
+      "size_bytes": 1186064,
+      "size_mb": 1.13,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/聊天8-2.png",
+      "scope": "img",
+      "size_bytes": 1160624,
+      "size_mb": 1.11,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/聊天8-1.png",
+      "scope": "img",
+      "size_bytes": 1159060,
+      "size_mb": 1.11,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/学校天台.png",
+      "scope": "img",
+      "size_bytes": 1099497,
+      "size_mb": 1.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/美术馆5.png",
+      "scope": "img",
+      "size_bytes": 1044362,
+      "size_mb": 1.0,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/花海.png",
+      "scope": "img",
+      "size_bytes": 1033678,
+      "size_mb": 0.99,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/画展1.png",
+      "scope": "img",
+      "size_bytes": 968454,
+      "size_mb": 0.92,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/海滨.png",
+      "scope": "img",
+      "size_bytes": 947359,
+      "size_mb": 0.9,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/逝去流光念.mp3",
+      "scope": "bgm",
+      "size_bytes": 924301,
+      "size_mb": 0.88,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/聊天7.png",
+      "scope": "img",
+      "size_bytes": 890048,
+      "size_mb": 0.85,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/医院3.png",
+      "scope": "img",
+      "size_bytes": 881869,
+      "size_mb": 0.84,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/走廊4.png",
+      "scope": "img",
+      "size_bytes": 880381,
+      "size_mb": 0.84,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/教学楼4.png",
+      "scope": "img",
+      "size_bytes": 874114,
+      "size_mb": 0.83,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/市场.png",
+      "scope": "img",
+      "size_bytes": 870963,
+      "size_mb": 0.83,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/苦痛穿梭路.mp3",
+      "scope": "bgm",
+      "size_bytes": 841127,
+      "size_mb": 0.8,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/原画飞翔2.png",
+      "scope": "img",
+      "size_bytes": 810516,
+      "size_mb": 0.77,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/客厅2.png",
+      "scope": "img",
+      "size_bytes": 809868,
+      "size_mb": 0.77,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/法庭2.png",
+      "scope": "img",
+      "size_bytes": 806140,
+      "size_mb": 0.77,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/走廊5.png",
+      "scope": "img",
+      "size_bytes": 801586,
+      "size_mb": 0.76,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/天台6.png",
+      "scope": "img",
+      "size_bytes": 789019,
+      "size_mb": 0.75,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/医院4.png",
+      "scope": "img",
+      "size_bytes": 754737,
+      "size_mb": 0.72,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/俯瞰城市3.png",
+      "scope": "img",
+      "size_bytes": 743828,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/厨房1.png",
+      "scope": "img",
+      "size_bytes": 742424,
+      "size_mb": 0.71,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/咖啡圆舞曲.mp3",
+      "scope": "bgm",
+      "size_bytes": 718260,
+      "size_mb": 0.68,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/原画林间1.png",
+      "scope": "img",
+      "size_bytes": 699892,
+      "size_mb": 0.67,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/聊天10.png",
+      "scope": "img",
+      "size_bytes": 686957,
+      "size_mb": 0.66,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/卧室3.png",
+      "scope": "img",
+      "size_bytes": 664965,
+      "size_mb": 0.63,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/校园2.png",
+      "scope": "img",
+      "size_bytes": 659867,
+      "size_mb": 0.63,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/黎明向白昼.mp3",
+      "scope": "bgm",
+      "size_bytes": 633818,
+      "size_mb": 0.6,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/再见的温柔.mp3",
+      "scope": "bgm",
+      "size_bytes": 630896,
+      "size_mb": 0.6,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/空灵的寂静.mp3",
+      "scope": "bgm",
+      "size_bytes": 628382,
+      "size_mb": 0.6,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/咖啡馆2.png",
+      "scope": "img",
+      "size_bytes": 616854,
+      "size_mb": 0.59,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/原画三人联系.png",
+      "scope": "img",
+      "size_bytes": 598828,
+      "size_mb": 0.57,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/bgm/日光照山海.mp3",
+      "scope": "bgm",
+      "size_bytes": 580750,
+      "size_mb": 0.55,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/手术室2.png",
+      "scope": "img",
+      "size_bytes": 557338,
+      "size_mb": 0.53,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/友也的画作4.png",
+      "scope": "img",
+      "size_bytes": 531811,
+      "size_mb": 0.51,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/麦田.png",
+      "scope": "img",
+      "size_bytes": 516409,
+      "size_mb": 0.49,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/咖啡与报纸.png",
+      "scope": "img",
+      "size_bytes": 508283,
+      "size_mb": 0.48,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/voice/20540.mp3",
+      "scope": "voice",
+      "size_bytes": 463452,
+      "size_mb": 0.44,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/原画友也与绚音2.png",
+      "scope": "img",
+      "size_bytes": 463050,
+      "size_mb": 0.44,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/voice/30124.mp3",
+      "scope": "voice",
+      "size_bytes": 456540,
+      "size_mb": 0.44,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/voice/20601.mp3",
+      "scope": "voice",
+      "size_bytes": 447900,
+      "size_mb": 0.43,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/voice/304720.mp3",
+      "scope": "voice",
+      "size_bytes": 440988,
+      "size_mb": 0.42,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/voice/20735.mp3",
+      "scope": "voice",
+      "size_bytes": 413916,
+      "size_mb": 0.39,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/bgr/原画友也和葵.png",
+      "scope": "img",
+      "size_bytes": 404009,
+      "size_mb": 0.39,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10115.png",
+      "scope": "img",
+      "size_bytes": 48747,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10478.png",
+      "scope": "img",
+      "size_bytes": 48746,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10104.png",
+      "scope": "img",
+      "size_bytes": 48722,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10095.png",
+      "scope": "img",
+      "size_bytes": 48474,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10289.png",
+      "scope": "img",
+      "size_bytes": 48192,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10237.png",
+      "scope": "img",
+      "size_bytes": 48150,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10111.png",
+      "scope": "img",
+      "size_bytes": 48047,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10109.png",
+      "scope": "img",
+      "size_bytes": 47746,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10103.png",
+      "scope": "img",
+      "size_bytes": 47695,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10489.png",
+      "scope": "img",
+      "size_bytes": 47659,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10093.png",
+      "scope": "img",
+      "size_bytes": 47570,
+      "size_mb": 0.05,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10091.png",
+      "scope": "img",
+      "size_bytes": 46800,
+      "size_mb": 0.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10105.png",
+      "scope": "img",
+      "size_bytes": 46718,
+      "size_mb": 0.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10597.png",
+      "scope": "img",
+      "size_bytes": 46659,
+      "size_mb": 0.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    },
+    {
+      "path": "assets/img/achievements/新建文件夹/10559.png",
+      "scope": "img",
+      "size_bytes": 46507,
+      "size_mb": 0.04,
+      "dynamic_ref_count": 0,
+      "static_ref_count": 0,
+      "total_ref_count": 0,
+      "referenced": false,
+      "static_ref_sources": []
+    }
+  ],
+  "totals": {
+    "assets_img_mb": 458.47,
+    "assets_bgm_mb": 312.53,
+    "assets_voice_mb": 434.68,
+    "referenced_files": 2508,
+    "unreferenced_files": 485
+  }
+}
