@@ -6,8 +6,21 @@
   <title>个人简介 - 刘澜轩</title>
 
   <style>
+    :root {
+      --page-padding: clamp(14px, 3vw, 28px);
+      --card-padding: clamp(18px, 4vw, 40px);
+      --glass-bg: rgba(255, 244, 252, 0.62);
+      --glass-shadow: 0 12px 34px rgba(43, 24, 62, 0.18);
+      --text-color: #34263f;
+      --accent-color: #8662b0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: "STSong", "Songti SC", "Microsoft YaHei", Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
       display: flex;
@@ -15,105 +28,121 @@
       align-items: center;
       background: url('../assets/img/bgr/profile.png') no-repeat center center fixed;
       background-size: cover;
+      padding: max(12px, env(safe-area-inset-top)) 0 max(24px, env(safe-area-inset-bottom));
+      color: var(--text-color);
     }
 
-    /* 公共宽度限制容器，左右留白 */
     .content-wrapper {
-      width: calc(100% - 80px); /* 两边各留 40px */
-      max-width: 1600px;        /* 最大宽度限制 */
-      margin: 20px auto;
+      width: min(1120px, calc(100% - clamp(24px, 6vw, 80px)));
+      margin: 16px auto 0;
     }
 
-    /* 标题栏整体 */
     .header-bar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
     }
 
     .header-left,
     .header-right {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
-    /* 单个独立背景容器 */
     .glass-item {
-      padding: 8px 18px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 15px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-      font-size: 18px;
-      color: #333;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 16px;
+      box-shadow: var(--glass-shadow);
+      font-size: 17px;
+      color: var(--text-color);
       text-decoration: none;
       transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
     }
 
     .glass-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      color: #0077cc;
+      box-shadow: 0 12px 26px rgba(43, 24, 62, 0.24);
+      color: var(--accent-color);
     }
 
     .glass-item.active {
       font-weight: bold;
-      color: #0077cc;
+      color: var(--accent-color);
       text-decoration: underline;
     }
 
-    /* 个人卡片容器 */
     .profile-container {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: nowrap;
+      justify-content: space-between;
       align-items: flex-start;
-      gap: 40px;
-      padding: 40px 60px;
-
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 25px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+      gap: clamp(20px, 4vw, 42px);
+      padding: var(--card-padding);
+      background: linear-gradient(135deg, rgba(255, 243, 248, 0.72), rgba(225, 203, 255, 0.54));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 28px;
+      box-shadow: 0 18px 42px rgba(43, 24, 62, 0.18);
     }
 
     #profile-name {
-      flex-basis: 100%;
-      font-size: 42px;
-      text-align: center;
-      margin: 0 0 20px 0;
-      color: #333;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .profile-container img {
-      border-radius: 20px;
-      width: 100%;
-      max-width: 350px;
+      flex: 0 0 clamp(220px, 30vw, 320px);
+      width: clamp(220px, 30vw, 320px);
+      border-radius: 22px;
       height: auto;
       object-fit: cover;
+      box-shadow: 0 12px 28px rgba(57, 31, 78, 0.18);
     }
 
     .profile-text {
       flex: 1;
-      min-width: 260px;
-      font-size: 20px;
-      line-height: 1.8;
-      color: #333;
+      min-width: 0;
+      font-size: clamp(16px, 1.45vw, 20px);
+      line-height: 1.85;
+      color: var(--text-color);
     }
 
     .profile-text h2 {
       margin-top: 0;
-      font-size: 28px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 8px;
+      margin-bottom: 18px;
+      font-size: clamp(28px, 3vw, 42px);
+      border-bottom: 1px solid rgba(87, 62, 108, 0.18);
+      padding-bottom: 12px;
+      letter-spacing: 0.06em;
     }
 
     .profile-text p {
-      margin: 12px 0;
+      margin: 12px 0 0;
+      word-break: break-word;
     }
 
     .profile-text a {
-      color: #0077cc;
+      color: var(--accent-color);
       text-decoration: none;
     }
 
@@ -121,11 +150,10 @@
       text-decoration: underline;
     }
 
-    /* 下方返回按钮 */
     .back-link {
       margin: 20px 0 40px 0;
-      width: 180px;
-      height: 55px;
+      width: min(220px, calc(100% - 32px));
+      height: 56px;
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -160,10 +188,125 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.35);
     }
 
-    /* 响应式优化：小屏幕宽度时自动缩窄 */
+    @media (max-width: 920px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .header-bar {
+        flex-direction: column;
+      }
+
+      .header-right {
+        width: 100%;
+      }
+
+      .profile-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-container img {
+        width: min(100%, 320px);
+      }
+
+      .profile-text {
+        width: 100%;
+      }
+    }
+
     @media (max-width: 768px) {
       .content-wrapper {
-        width: 95%;
+        width: calc(100% - 24px);
+      }
+
+      .glass-item {
+        min-height: 40px;
+        font-size: 15px;
+        padding: 9px 14px;
+      }
+
+      .header-right {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .profile-container {
+        padding: 18px 16px 20px;
+        border-radius: 22px;
+      }
+
+      .profile-container img {
+        width: min(70vw, 260px);
+        border-radius: 18px;
+      }
+
+      .profile-text {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .profile-text h2 {
+        font-size: 28px;
+        margin-bottom: 14px;
+        text-align: center;
+      }
+
+      .back-link {
+        height: 52px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: max(8px, env(safe-area-inset-top));
+      }
+
+      .content-wrapper {
+        width: calc(100% - 16px);
+      }
+
+      .header-left,
+      .header-right {
+        gap: 8px;
+      }
+
+      .header-right {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .glass-item {
+        width: 100%;
+        border-radius: 14px;
+        font-size: 14px;
+        padding: 8px 10px;
+      }
+
+      .header-left .glass-item:first-child,
+      .header-left .glass-item:last-child {
+        width: auto;
+      }
+
+      .profile-container {
+        gap: 16px;
+      }
+
+      .profile-container img {
+        width: min(74vw, 220px);
+      }
+
+      .profile-text {
+        font-size: 14px;
+      }
+
+      .profile-text h2 {
+        font-size: 24px;
+      }
+
+      .back-link {
+        width: calc(100% - 20px);
+        margin-bottom: 28px;
       }
     }
   </style>
