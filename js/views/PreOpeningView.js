@@ -17,12 +17,13 @@ const PreOpeningView = {
                     height: 100%;
                     object-fit: contain;
                     background: #000;
+                    pointer-events: none;
                 }
             </style>
             <div class="view pre-opening-view">
-                <video id="pre-opening-video-1" src="./assets/video/intro_1.mp4" autoplay playsinline preload="auto"></video>
-                <video id="pre-opening-video-2" src="./assets/video/intro_2.mp4" loop playsinline preload="auto" style="display: none; cursor: pointer;"></video>
-                <video id="pre-opening-video-3" src="./assets/video/intro_3.mp4" playsinline preload="auto" style="display: none;"></video>
+                <video id="pre-opening-video-1" src="./assets/video/intro_1.mp4" autoplay playsinline webkit-playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+                <video id="pre-opening-video-2" src="./assets/video/intro_2.mp4" loop playsinline webkit-playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback tabindex="-1" style="display: none;"></video>
+                <video id="pre-opening-video-3" src="./assets/video/intro_3.mp4" playsinline webkit-playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback tabindex="-1" style="display: none;"></video>
             </div>
         `;
     },

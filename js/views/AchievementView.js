@@ -89,6 +89,7 @@ const AchievementView = {
                 .achievement-grid-viewport {
                     flex: 1;
                     overflow-y: auto;
+                    overflow-x: hidden;
                     -ms-overflow-style: none;
                     scrollbar-width: none;
                 }
@@ -192,6 +193,7 @@ const AchievementView = {
                 @media (max-width: 900px) and (pointer: coarse) {
                     .achievement-view {
                         min-height: calc(var(--app-vh, 1vh) * 100);
+                        overflow: hidden;
                     }
                     .navbar {
                         height: 74px;
@@ -205,6 +207,57 @@ const AchievementView = {
                     }
                     .menu-button span {
                         font-size: clamp(12px, 2.2vw, 16px);
+                    }
+                    .achievement-grid-container {
+                        padding: 10px 12px 20px;
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                        gap: 10px;
+                        align-items: start;
+                    }
+                    .achievement-item {
+                        max-width: none;
+                        min-width: 0;
+                        height: 152px;
+                        padding: 10px 8px;
+                        border-radius: 12px;
+                    }
+                    .achievement-icon {
+                        width: min(100%, 74px);
+                        height: min(100%, 74px);
+                        margin-bottom: 8px;
+                        border-width: 2px;
+                    }
+                    .achievement-info h3 {
+                        margin-bottom: 4px;
+                        font-size: clamp(11px, 1.8vw, 14px);
+                        line-height: 1.2;
+                    }
+                    .achievement-info p {
+                        font-size: clamp(9px, 1.45vw, 12px);
+                        line-height: 1.25;
+                    }
+                }
+
+                @media (max-width: 980px) and (max-height: 520px) and (orientation: landscape) {
+                    .achievement-grid-container {
+                        padding: 8px 12px 18px;
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                        gap: 8px;
+                    }
+                    .achievement-item {
+                        height: 126px;
+                        padding: 8px 6px;
+                    }
+                    .achievement-icon {
+                        width: 56px;
+                        height: 56px;
+                        margin-bottom: 6px;
+                    }
+                    .achievement-info h3 {
+                        font-size: 11px;
+                    }
+                    .achievement-info p {
+                        font-size: 9px;
                     }
                 }
             </style>

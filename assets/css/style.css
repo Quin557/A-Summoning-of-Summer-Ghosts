@@ -846,6 +846,8 @@ body.compact-landscape .mobile-scale-box[data-scale='gallery'] {
     padding: 22px 28px var(--dialogue-bottom-padding, 72px);
     box-sizing: border-box;
     height: 100%;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .textbox-name {
@@ -853,6 +855,8 @@ body.compact-landscape .mobile-scale-box[data-scale='gallery'] {
     font-size: clamp(1.1rem, 2.1vw, 1.8rem);
     margin-bottom: 10px;
     font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .textbox-text {
@@ -863,6 +867,8 @@ body.compact-landscape .mobile-scale-box[data-scale='gallery'] {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: break-word;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* 选项系统 */
@@ -905,6 +911,8 @@ body.compact-landscape .mobile-scale-box[data-scale='gallery'] {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.5rem;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* 暂停菜单 */

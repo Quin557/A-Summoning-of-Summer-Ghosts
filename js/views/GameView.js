@@ -663,9 +663,15 @@ const GameView = {
                             video.style.width = '100%';
                             video.style.height = '100%';
                             video.style.objectFit = 'contain';
+                            video.style.pointerEvents = 'none';
                             video.autoplay = true;
                             video.controls = false;
                             video.playsInline = true;
+                            video.setAttribute('webkit-playsinline', '');
+                            video.setAttribute('controlslist', 'nodownload noplaybackrate noremoteplayback nofullscreen');
+                            video.setAttribute('disablepictureinpicture', '');
+                            video.setAttribute('disableremoteplayback', '');
+                            video.setAttribute('tabindex', '-1');
 
                             overlay.appendChild(video);
                             document.body.appendChild(overlay);

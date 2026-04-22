@@ -24,6 +24,7 @@ const OpeningView = {
                     height: 100%;
                     object-fit: contain;
                     background: #000;
+                    pointer-events: none;
                 }
                 #skip-opening-btn {
                     position: absolute;
@@ -54,7 +55,7 @@ const OpeningView = {
                 }
             </style>
             <div class="view opening-view">
-                <video id="opening-video" src="./assets/video/opening.mp4" autoplay playsinline webkit-playsinline preload="auto"></video>
+                <video id="opening-video" src="./assets/video/opening.mp4" autoplay playsinline webkit-playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
                 <button id="skip-opening-btn">跳过开场</button>
             </div>
         `;

@@ -16,6 +16,7 @@ const EndingView = {
                     height: 100%;
                     object-fit: contain;
                     background: #000;
+                    pointer-events: none;
                 }
                 #skip-ending-btn {
                     position: absolute;
@@ -46,7 +47,7 @@ const EndingView = {
                 }
             </style>
             <div class="view ending-view">
-                <video id="ending-video" src="./assets/video/ending.mp4" autoplay playsinline webkit-playsinline preload="auto"></video>
+                <video id="ending-video" src="./assets/video/ending.mp4" autoplay playsinline webkit-playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
                 <button id="skip-ending-btn">跳过片尾</button>
             </div>
         `;
