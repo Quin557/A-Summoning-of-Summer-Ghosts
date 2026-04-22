@@ -16,6 +16,7 @@ export default class AudioManager {
         this.hasUserActivated = false;
         this.pendingBgm = null;
         this.pendingVoice = null;
+        this.preloadedAudio = new Map();
         this.boundUnlockAudio = this.unlockAudio.bind(this);
         this.boundFlushPendingMedia = this.flushPendingMedia.bind(this);
         this.volumes = {
@@ -37,8 +38,8 @@ export default class AudioManager {
         this.sfxTitleHoverPlayer.src = './assets/bgm/holver.ogg';
         this.sfxTitleClickPlayer.src = './assets/bgm/click.ogg';
         this.sfxSysYesPlayer.src = './assets/bgm/click.ogg';
-        this.voicePlayer.preload = 'none';
-        this.bgmPlayer.preload = 'none';
+        this.voicePlayer.preload = 'metadata';
+        this.bgmPlayer.preload = 'metadata';
         
         this.applyVolumes();
         this.bindUserActivation();
@@ -165,6 +166,19 @@ export default class AudioManager {
             this.pendingVoice = src;
             console.warn("语音自动播放被浏览器阻止。");
         });
+    }
+
+    preloadAudio(src) {
+        if (!src || this.preloadedAudio.has(src)) return;
+        const audio = document.createElement('audio');
+        audio.preload = 'metadata';
+        audio.src = src;
+        try {
+            audio.load();
+        } catch (error) {
+            console.warn('预加载音频失败:', src, error);
+        }
+        this.preloadedAudio.set(src, audio);
     }
 
     stopVoice() {

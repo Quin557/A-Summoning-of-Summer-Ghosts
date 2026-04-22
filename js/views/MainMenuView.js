@@ -223,7 +223,7 @@ const MainMenuView = {
             </div>
         `;
 
-        engine.audioManager.playBgm('./assets/bgm/test.mp3', true);
+        engine.audioManager.playBgm('./assets/bgm/test.m4a', true);
     },
 
     attachEventListeners: (container, engine) => {

@@ -6,7 +6,7 @@
 'use strict';
 
 // 每次修改 SW 逻辑时更新版本号（或加上时间戳）
-const VERSION = 'v2026-04-21-01';
+const VERSION = 'v2026-04-22-01';
 
 // ---- GitHub Pages 项目路径（按你的仓库名）----
 const BASE_PATH = '/Summoning-of-Summer-Ghosts.github.io/';
@@ -201,23 +201,59 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 4) 媒体（音/视频）：以网络优先为主，避免海量资源占满 PWA 缓存
+  // 4) 媒体（音/视频）
   if (request.destination === 'audio' || request.destination === 'video') {
     event.respondWith((async () => {
-      const cacheName = CACHES.MEDIA;
       const pathname = new URL(request.url).pathname;
-      const isLargeStoryMedia = /\/assets\/(voice|bgm|video)\//.test(pathname);
+      const isStoryAudio = /\/assets\/(voice|bgm)\//.test(pathname);
+      const isVideo = /\/assets\/video\//.test(pathname);
+      const hasRangeHeader = request.headers.has('range');
+
+      // 已压缩/剧情音频：Cache First + 后台刷新，提升反复切换和断续播放体验
+      if (isStoryAudio && !hasRangeHeader) {
+        const cacheName = CACHES.MEDIA;
+        const cached = await matchFromCaches(request, [cacheName]);
+        const revalidate = (async () => {
+          try {
+            const res = await fetch(request);
+            if (res && res.ok) {
+              await putInCache(cacheName, request, res.clone());
+              limitCacheEntries(cacheName, 120);
+            }
+            return res;
+          } catch (_) {
+            return undefined;
+          }
+        })();
+
+        if (cached) {
+          event.waitUntil(revalidate);
+          return cached;
+        }
+
+        const network = await revalidate;
+        if (network) return network;
+        return new Response('', { status: 504 });
+      }
+
+      // 视频继续保持网络优先，避免占满缓存
+      if (isVideo || hasRangeHeader) {
+        try {
+          const res = await fetch(request, { cache: 'no-store' });
+          if (res && (res.ok || res.type === 'opaque')) return res;
+        } catch (_) {}
+
+        const cached = await matchFromCaches(request, [CACHES.MEDIA]);
+        if (cached) return cached;
+        return new Response('', { status: 504 });
+      }
 
       try {
         const res = await fetch(request, { cache: 'no-store' });
-        if (res && res.ok && !isLargeStoryMedia) {
-          await putInCache(cacheName, request, res.clone());
-          limitCacheEntries(cacheName, 20);
-        }
         if (res && (res.ok || res.type === 'opaque')) return res;
       } catch (_) {}
 
-      const cached = await matchFromCaches(request, [cacheName]);
+      const cached = await matchFromCaches(request, [CACHES.MEDIA]);
       if (cached) return cached;
       return new Response('', { status: 504 });
     })());

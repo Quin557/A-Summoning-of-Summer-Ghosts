@@ -54,7 +54,7 @@ const OpeningView = {
                 }
             </style>
             <div class="view opening-view">
-                <video id="opening-video" src="./assets/video/opening.mov" autoplay playsinline webkit-playsinline preload="auto"></video>
+                <video id="opening-video" src="./assets/video/opening.mp4" autoplay playsinline webkit-playsinline preload="auto"></video>
                 <button id="skip-opening-btn">跳过开场</button>
             </div>
         `;

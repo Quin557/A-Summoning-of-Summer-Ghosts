@@ -57,6 +57,8 @@ export default class GameEngine {
         this.autoAdvanceTimer = null;
         this.autoAdvanceAudioListener = null; 
         this.assetExistenceCache = new Map();
+        this.assetVariantCache = new Map();
+        this.prefetchedAssets = new Set();
     }
 
     async init() {
@@ -204,6 +206,109 @@ export default class GameEngine {
         }
     }
 
+    async resolveAssetUrl(candidates) {
+        const cacheKey = candidates.join('|');
+        if (this.assetVariantCache.has(cacheKey)) {
+            return this.assetVariantCache.get(cacheKey);
+        }
+
+        for (const candidate of candidates) {
+            if (await this._checkFileExists(candidate)) {
+                this.assetVariantCache.set(cacheKey, candidate);
+                return candidate;
+            }
+        }
+
+        const fallback = candidates[candidates.length - 1] || null;
+        this.assetVariantCache.set(cacheKey, fallback);
+        return fallback;
+    }
+
+    async resolveNodeAssets(node) {
+        return {
+            bgr: node.bgr
+                ? await this.resolveAssetUrl([
+                    `./assets/img/bgr/${node.bgr}.jpg`,
+                    `./assets/img/bgr/${node.bgr}.jpeg`,
+                    `./assets/img/bgr/${node.bgr}.png`,
+                ])
+                : '',
+            lChar: node.lCharactor
+                ? await this.resolveAssetUrl([
+                    `./assets/img/character/${node.lCharactor}.png`,
+                ])
+                : '',
+            rChar: node.rCharactor
+                ? await this.resolveAssetUrl([
+                    `./assets/img/character/${node.rCharactor}.png`,
+                ])
+                : '',
+            bgm: node.bgm
+                ? await this.resolveAssetUrl([
+                    `./assets/bgm/${node.bgm}.m4a`,
+                    `./assets/bgm/${node.bgm}.mp3`,
+                ])
+                : '',
+            voice: node.voice && node.voice !== 'null'
+                ? await this.resolveAssetUrl([
+                    `./assets/voice/${node.voice}.m4a`,
+                    `./assets/voice/${node.voice}.mp3`,
+                ])
+                : '',
+        };
+    }
+
+    getUpcomingNodeIds(nodeId, node) {
+        if (!node?.onNext) return [];
+        const nextIds = new Set();
+        const onNext = node.onNext;
+
+        if (onNext.choice) {
+            Object.values(onNext.choice).forEach((choice) => {
+                if (choice?.targetNode != null) nextIds.add(choice.targetNode);
+            });
+        }
+        if (onNext.nextNode) {
+            nextIds.add(parseInt(nodeId, 10) + 1);
+        }
+        if (onNext.setNode != null) {
+            nextIds.add(onNext.setNode);
+        }
+
+        return [...nextIds].slice(0, 3);
+    }
+
+    warmUpcomingAssets(nodeId, node) {
+        const nextNodeIds = this.getUpcomingNodeIds(nodeId, node);
+        if (nextNodeIds.length === 0) return;
+
+        const schedule = window.requestIdleCallback
+            ? window.requestIdleCallback.bind(window)
+            : (callback) => setTimeout(callback, 120);
+
+        schedule(async () => {
+            for (const nextNodeId of nextNodeIds) {
+                const nextNode = this.dataManager.getNode(nextNodeId);
+                if (!nextNode) continue;
+                const resolvedAssets = await this.resolveNodeAssets(nextNode);
+                [resolvedAssets.bgr, resolvedAssets.lChar, resolvedAssets.rChar].filter(Boolean).forEach((src) => {
+                    if (this.prefetchedAssets.has(src)) return;
+                    const img = new Image();
+                    img.decoding = 'async';
+                    img.fetchPriority = 'low';
+                    img.src = src;
+                    this.prefetchedAssets.add(src);
+                });
+                if (resolvedAssets.bgm) {
+                    this.audioManager.preloadAudio(resolvedAssets.bgm);
+                }
+                if (resolvedAssets.voice) {
+                    this.audioManager.preloadAudio(resolvedAssets.voice);
+                }
+            }
+        });
+    }
+
     scheduleAutoAdvance() {
         this.cancelAutoAdvance();
         if (!this.gameState.isAutoPlay) return;
@@ -249,18 +354,12 @@ export default class GameEngine {
         await this.processNode(this.gameState.currentSave.nodeId);
     }
 
-    async preloadAssetsForNode(node) {
-        const assetsToLoad = [];
-
-        if (node.bgr) {
-            assetsToLoad.push(`./assets/img/bgr/${node.bgr}.png`);
-        }
-        if (node.lCharactor) {
-            assetsToLoad.push(`./assets/img/character/${node.lCharactor}.png`);
-        }
-        if (node.rCharactor) {
-            assetsToLoad.push(`./assets/img/character/${node.rCharactor}.png`);
-        }
+    async preloadAssetsForNode(node, resolvedAssets) {
+        const assetsToLoad = [
+            resolvedAssets?.bgr,
+            resolvedAssets?.lChar,
+            resolvedAssets?.rChar,
+        ].filter(Boolean);
 
         if (assetsToLoad.length === 0) {
             return Promise.resolve(); 
@@ -314,16 +413,16 @@ export default class GameEngine {
         }
 
         this.gameState.isVoicePlaying = false;
+        const resolvedAssets = await this.resolveNodeAssets(node);
 
-        if (node.voice && node.voice !== "null") {
-            const voicePath = `./assets/voice/${node.voice}.mp3`;
-            const voiceExists = await this._checkFileExists(voicePath);
+        if (resolvedAssets.voice) {
+            const voiceExists = await this._checkFileExists(resolvedAssets.voice);
 
             if (voiceExists) {
-                this.audioManager.playVoice(voicePath);
+                this.audioManager.playVoice(resolvedAssets.voice);
                 this.gameState.isVoicePlaying = true;
             } else {
-                console.warn(`语音文件不存在: ${voicePath}. 将使用文本计时器。`);
+                console.warn(`语音文件不存在: ${resolvedAssets.voice}. 将使用文本计时器。`);
                 this.audioManager.stopVoice();
                 this.gameState.isVoicePlaying = false;
             }
@@ -332,12 +431,12 @@ export default class GameEngine {
             this.gameState.isVoicePlaying = false;
         }
 
-        await this.preloadAssetsForNode(node); 
+        await this.preloadAssetsForNode(node, resolvedAssets); 
         this.gameState.currentSave.nodeId = nodeId;
-        this.uiManager.renderNode(node);
+        this.uiManager.renderNode(node, resolvedAssets);
 
-        if (node.bgm) {
-            this.audioManager.playBgm(`./assets/bgm/${node.bgm}.mp3`);
+        if (resolvedAssets.bgm) {
+            this.audioManager.playBgm(resolvedAssets.bgm);
         } else if (node.bgm === null) {
             this.audioManager.stopBgm();
         }
@@ -348,6 +447,7 @@ export default class GameEngine {
         
         if (node.onEnter) { }
         if (node.type === 'animation') { }
+        this.warmUpcomingAssets(nodeId, node);
         this.scheduleAutoAdvance(); 
     }
     
