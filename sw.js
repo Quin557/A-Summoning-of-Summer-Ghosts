@@ -1,15 +1,15 @@
 /* sw.js — PWA Service Worker for GitHub Pages (Project Site)
- * Scope: /Summoning-of-Summer-Ghosts.github.io/
+ * Scope: /A-Summoning-of-Summer-Ghosts/
  * Place this file at the repo root (same level as index.html)
  */
 
 'use strict';
 
 // 每次修改 SW 逻辑时更新版本号（或加上时间戳）
-const VERSION = 'v2026-04-22-01';
+const VERSION = 'v2026-04-22-02';
 
 // ---- GitHub Pages 项目路径（按你的仓库名）----
-const BASE_PATH = '/Summoning-of-Summer-Ghosts.github.io/';
+const BASE_PATH = '/A-Summoning-of-Summer-Ghosts/';
 
 // 计算作用域基准 URL（如：https://.../Summoning-of-Summer-Ghosts.github.io/）
 const SCOPE_URL = new URL(BASE_PATH, self.location.origin);

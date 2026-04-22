@@ -150,25 +150,44 @@ const MainMenuView = {
 
                 @media (max-width: 900px) and (pointer: coarse) {
                     .menu-stack {
-                        --menu-width: min(25vw, 160px);
-                        --menu-scale: 0.82;
-                        left: clamp(64vw, 73vw, calc(100vw - 92px));
-                        top: 50%;
-                        max-height: 76vh;
+                        --menu-width: clamp(228px, 36vw, 298px);
+                        --menu-scale: 1;
+                        left: clamp(63vw, 73vw, calc(100vw - 156px));
+                        top: 46%;
+                        max-height: 86vh;
                     }
 
                     .menu-title {
-                        margin-bottom: 6px;
-                        font-size: clamp(16px, 2.5vw, 24px);
+                        margin-bottom: 14px;
+                        font-size: clamp(22px, 3.6vw, 34px);
                     }
 
                     .main-menu-button-label {
-                        width: 68%;
-                        font-size: clamp(9px, 1.45vw, 12px);
+                        width: 72%;
+                        font-size: clamp(15px, 2.5vw, 20px);
                     }
 
                     .main-menu-button + .main-menu-button {
-                        margin-top: -12px;
+                        margin-top: -8px;
+                    }
+                }
+
+                @media (max-width: 600px) and (pointer: coarse) {
+                    .menu-stack {
+                        --menu-width: min(48vw, 248px);
+                        left: clamp(61vw, 72vw, calc(100vw - 132px));
+                        top: 47%;
+                        max-height: 86vh;
+                    }
+
+                    .menu-title {
+                        margin-bottom: 12px;
+                        font-size: clamp(20px, 5vw, 28px);
+                    }
+
+                    .main-menu-button-label {
+                        width: 72%;
+                        font-size: clamp(14px, 3.5vw, 18px);
                     }
                 }
 
@@ -182,6 +201,30 @@ const MainMenuView = {
                     .menu-stack {
                         --menu-scale: 0.74;
                         top: 49%;
+                    }
+                }
+
+                @media (max-width: 980px) and (max-height: 520px) and (orientation: landscape) {
+                    .menu-stack {
+                        --menu-width: clamp(188px, 24vw, 230px);
+                        --menu-scale: 0.84;
+                        left: clamp(64vw, 73vw, calc(100vw - 128px));
+                        top: 48%;
+                        max-height: 88vh;
+                    }
+
+                    .menu-title {
+                        margin-bottom: 8px;
+                        font-size: clamp(18px, 2.6vw, 26px);
+                    }
+
+                    .main-menu-button + .main-menu-button {
+                        margin-top: -12px;
+                    }
+
+                    .main-menu-button-label {
+                        width: 70%;
+                        font-size: clamp(12px, 1.8vw, 16px);
                     }
                 }
             </style>

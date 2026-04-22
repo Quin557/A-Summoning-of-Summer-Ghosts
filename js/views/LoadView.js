@@ -243,17 +243,308 @@ const LoadView = {
                     }
 
                     .save-card {
-                        grid-template-columns: 1fr;
-                        min-height: unset;
+                        grid-template-columns: minmax(0, 1fr) minmax(138px, 0.96fr);
+                        grid-template-areas:
+                            "main thumb"
+                            "actions actions";
+                        gap: 12px 16px;
+                        min-height: 228px;
+                        padding: 18px 18px 14px;
+                        border-radius: 26px;
                     }
 
-                    .save-card-thumb {
+                    .save-card-main {
+                        grid-area: main;
                         justify-content: flex-start;
                     }
 
-                    .save-card-actions {
+                    .save-card-thumb {
+                        grid-area: thumb;
+                        justify-content: center;
+                        align-items: start;
+                        min-height: 114px;
+                        padding: 2px 10px 0;
+                        border-radius: 22px;
+                        background: rgba(255, 255, 255, 0.08);
+                        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+                    }
+
+                    .save-card-thumb img {
                         width: 100%;
-                        max-width: 286px;
+                        max-width: 220px;
+                        border-radius: 24px;
+                    }
+
+                    .save-card-name {
+                        margin-bottom: 10px;
+                        font-size: clamp(20px, 4vw, 28px);
+                    }
+
+                    .save-card-meta {
+                        gap: 8px;
+                        font-size: clamp(13px, 2.8vw, 18px);
+                    }
+
+                    .save-card-actions {
+                        grid-area: actions;
+                        width: 100%;
+                        max-width: none;
+                        display: grid;
+                        grid-template-columns: minmax(132px, 1.15fr) repeat(2, minmax(98px, 1fr));
+                        gap: 12px;
+                        margin-top: 2px;
+                        padding: 12px 10px 0;
+                        align-items: stretch;
+                        border-top: 1px solid rgba(118, 86, 140, 0.16);
+                    }
+
+                    .slot-action-btn {
+                        width: 100%;
+                        height: 70px;
+                        border-radius: 20px;
+                        background: rgba(255, 255, 255, 0.12);
+                        border: 1px solid rgba(255, 255, 255, 0.12);
+                        box-shadow:
+                            inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+                            0 8px 18px rgba(64, 38, 82, 0.08);
+                    }
+
+                    .slot-action-btn img {
+                        display: none;
+                    }
+
+                    .slot-action-btn span {
+                        display: block;
+                        position: static;
+                        color: rgba(255, 250, 255, 0.96);
+                        font-family: var(--font-button);
+                        font-size: 16px;
+                        line-height: 1;
+                        letter-spacing: 0.08em;
+                        text-shadow: 0 2px 8px rgba(48, 24, 62, 0.32);
+                    }
+
+                    .slot-action-btn--primary {
+                        justify-content: center;
+                        background: rgba(255, 255, 255, 0.12);
+                    }
+
+                    .slot-action-btn--primary::before {
+                        content: '';
+                        position: absolute;
+                        left: 10px;
+                        right: 10px;
+                        height: 56px;
+                        border-radius: 20px;
+                        background: linear-gradient(180deg, rgba(255, 238, 247, 0.68), rgba(255, 221, 238, 0.28));
+                        border: 1px solid rgba(255, 255, 255, 0.42);
+                        box-shadow:
+                            0 0 0 1px rgba(255, 255, 255, 0.28) inset,
+                            0 8px 20px rgba(88, 52, 101, 0.12);
+                    }
+
+                    .slot-action-btn--primary span {
+                        position: relative;
+                        z-index: 1;
+                        width: auto;
+                        text-align: center;
+                        color: #c64f77;
+                        font-size: 18px;
+                        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+                    }
+
+                    .slot-action-btn--primary img {
+                        display: block;
+                        position: relative;
+                        z-index: 1;
+                        width: 28px;
+                        height: 28px;
+                        margin-right: 8px;
+                        filter:
+                            drop-shadow(0 0 4px rgba(255, 255, 255, 0.52))
+                            drop-shadow(0 0 8px rgba(198, 79, 119, 0.18));
+                    }
+                }
+
+                @media (max-width: 640px) and (pointer: coarse) {
+                    .save-card {
+                        grid-template-columns: minmax(0, 1fr) minmax(124px, 0.92fr);
+                        gap: 8px 12px;
+                        min-height: 206px;
+                        padding: 16px 14px 12px;
+                    }
+
+                    .save-card-name {
+                        margin-bottom: 8px;
+                        font-size: clamp(18px, 5.2vw, 24px);
+                    }
+
+                    .save-card-meta {
+                        gap: 6px;
+                        font-size: clamp(12px, 3.6vw, 16px);
+                    }
+
+                    .save-card-thumb {
+                        min-height: 102px;
+                        padding: 0 8px 0;
+                    }
+
+                    .save-card-thumb img {
+                        border-radius: 20px;
+                    }
+
+                    .save-card-actions {
+                        grid-template-columns: minmax(114px, 1.12fr) repeat(2, minmax(78px, 1fr));
+                        gap: 8px;
+                        padding-top: 8px;
+                    }
+
+                    .slot-action-btn {
+                        height: 62px;
+                    }
+
+                    .slot-action-btn--primary {
+                        padding: 0 8px;
+                    }
+
+                    .slot-action-btn--primary::before {
+                        left: 8px;
+                        right: 8px;
+                        height: 50px;
+                        border-radius: 18px;
+                    }
+
+                    .slot-action-btn--primary span {
+                        font-size: 16px;
+                    }
+
+                    .slot-action-btn--primary img {
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 6px;
+                    }
+
+                    .slot-action-btn span {
+                        font-size: 13px;
+                    }
+                }
+
+                @media (max-width: 980px) and (max-height: 520px) and (orientation: landscape) {
+                    .load-view {
+                        padding: calc(var(--safe-top, 0px) + 10px) 12px calc(var(--safe-bottom, 0px) + 10px);
+                    }
+
+                    .load-shell {
+                        gap: 10px;
+                    }
+
+                    .load-header {
+                        grid-template-columns: minmax(0, 1fr) auto;
+                        gap: 10px 12px;
+                        align-items: center;
+                    }
+
+                    .load-title {
+                        font-size: clamp(22px, 3vw, 30px);
+                    }
+
+                    .load-subtitle {
+                        display: none;
+                    }
+
+                    .load-menu-btn {
+                        width: min(170px, 24vw);
+                    }
+
+                    #resume-btn {
+                        display: none;
+                    }
+
+                    .save-slot-grid {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        gap: 10px;
+                    }
+
+                    .save-card {
+                        grid-template-columns: minmax(0, 1.18fr) minmax(128px, 0.82fr);
+                        gap: 10px 14px;
+                        min-height: 158px;
+                        padding: 12px 14px;
+                        border-radius: 22px;
+                    }
+
+                    .save-card-main {
+                        grid-area: auto;
+                    }
+
+                    .save-card-name {
+                        margin-bottom: 6px;
+                        font-size: clamp(17px, 2.5vw, 24px);
+                    }
+
+                    .save-card-meta {
+                        gap: 4px;
+                        font-size: clamp(11px, 1.65vw, 15px);
+                    }
+
+                    .save-card-thumb {
+                        grid-area: auto;
+                        justify-content: center;
+                        min-height: 84px;
+                        padding: 0;
+                        border-radius: 18px;
+                        align-items: start;
+                        background: none;
+                        box-shadow: none;
+                    }
+
+                    .save-card-thumb img {
+                        width: min(100%, 180px);
+                        max-width: 180px;
+                        border-radius: 22px;
+                    }
+
+                    .save-card-actions {
+                        display: grid;
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                        gap: 8px;
+                        margin-top: auto;
+                        padding: 10px 0 0;
+                        width: min(320px, 100%);
+                        border-top: none;
+                    }
+
+                    .slot-action-btn {
+                        height: 46px;
+                        border-radius: 18px;
+                        background: rgba(255, 255, 255, 0.12);
+                        border: 1px solid rgba(255, 255, 255, 0.12);
+                        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+                    }
+
+                    .slot-action-btn img,
+                    .slot-action-btn--primary img {
+                        display: none;
+                    }
+
+                    .slot-action-btn span,
+                    .slot-action-btn--primary span {
+                        display: block;
+                        position: static;
+                        width: auto;
+                        margin: 0;
+                        text-align: center;
+                        font-size: 12px;
+                        color: rgba(255, 250, 255, 0.98);
+                        text-shadow: 0 1px 6px rgba(48, 24, 62, 0.28);
+                    }
+
+                    .slot-action-btn--primary {
+                        background: rgba(255, 255, 255, 0.18);
+                    }
+
+                    .slot-action-btn--primary::before {
+                        display: none;
                     }
                 }
             </style>
@@ -306,17 +597,17 @@ const LoadView = {
                         <div>时间：${dateText}</div>
                     </div>
                     <div class="save-card-actions">
-                        <button type="button" class="slot-action-btn" data-action="load" data-slot="${i}">
+                        <button type="button" class="slot-action-btn slot-action-btn--primary" data-action="load" data-slot="${i}">
                             <img src="./assets/img/load.png" alt="load">
-                            <span>读取</span>
+                            <span>LOAD</span>
                         </button>
                         <button type="button" class="slot-action-btn" data-action="save" data-slot="${i}">
                             <img src="./assets/img/save.png" alt="save">
-                            <span>保存</span>
+                            <span>SAVE</span>
                         </button>
                         <button type="button" class="slot-action-btn" data-action="delete" data-slot="${i}">
                             <img src="./assets/img/delete.png" alt="delete">
-                            <span>删除</span>
+                            <span>DELETE</span>
                         </button>
                     </div>
                 </div>

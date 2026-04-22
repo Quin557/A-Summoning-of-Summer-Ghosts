@@ -4,7 +4,7 @@ import PwaManager from './core/PwaManager.js';
 // 等待DOM完全加载后再启动游戏
 document.addEventListener('DOMContentLoaded', async () => {
     const pwaManager = new PwaManager({
-        basePath: '/Summoning-of-Summer-Ghosts.github.io/',
+        basePath: '/A-Summoning-of-Summer-Ghosts/',
     });
     pwaManager.init();
 

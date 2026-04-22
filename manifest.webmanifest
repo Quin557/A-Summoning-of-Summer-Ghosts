@@ -1,10 +1,10 @@
 {
-  "id": "/Summoning-of-Summer-Ghosts.github.io/",
+  "id": "/A-Summoning-of-Summer-Ghosts/",
   "name": "Summoning of Summer Ghosts",
   "short_name": "SummerGhosts",
   "description": "Installable PWA version of the interactive story game.",
-  "start_url": "/Summoning-of-Summer-Ghosts.github.io/?source=pwa",
-  "scope": "/Summoning-of-Summer-Ghosts.github.io/",
+  "start_url": "/A-Summoning-of-Summer-Ghosts/?source=pwa",
+  "scope": "/A-Summoning-of-Summer-Ghosts/",
   "display": "standalone",
   "orientation": "landscape",
   "background_color": "#111111",
