@@ -20,12 +20,6 @@ export default class UIManager {
     clearContainer() {
         this.engine.container.innerHTML = '';
         this.sentencePrinter = null;
-        // 清理可能注册的全局监听器
-        try {
-            if (this.__onGlobalKeydown && typeof window !== 'undefined' && window.removeEventListener) {
-                window.removeEventListener('keydown', this.__onGlobalKeydown, { passive: true });
-            }
-        } catch (e) { /* ignore */ }
     }
 
     // 对外提供 dispose 方法以便显式移除全局监听器
@@ -66,6 +60,7 @@ export default class UIManager {
             nameBox.textContent = node.name ? this.engine.localization.get(`story.name.${node.name}`) : '';
             const textKey = `story.nodes.${this.engine.gameState.currentSave.nodeId}.text`;
             const textContent = this.engine.localization.get(textKey);
+            this.adjustDialogueLayout(textContent, nameBox.textContent);
             this.sentencePrinter.print(textContent);
         } else {
             dialogueGroup.style.display = 'none';
@@ -138,6 +133,34 @@ export default class UIManager {
             this.sentencePrinter.skip();
         }
     }
+
+    fitDialogueText() {
+        const textElement = document.getElementById('dialogue-text');
+        if (!textElement) return;
+
+        const baseFontSize = parseFloat(textElement.dataset.baseFontSize || '16');
+        const baseLineHeight = parseFloat(textElement.dataset.baseLineHeight || String(baseFontSize * 1.6));
+
+        let fontSize = baseFontSize;
+        let lineHeight = baseLineHeight;
+
+        textElement.style.fontSize = `${fontSize}px`;
+        textElement.style.lineHeight = `${lineHeight}px`;
+        textElement.style.overflowY = 'hidden';
+
+        let attempts = 0;
+        while (textElement.scrollHeight > textElement.clientHeight + 1 && fontSize > 11 && attempts < 24) {
+            fontSize -= 0.5;
+            lineHeight = Math.max(fontSize * 1.34, lineHeight - 0.6);
+            textElement.style.fontSize = `${fontSize}px`;
+            textElement.style.lineHeight = `${lineHeight}px`;
+            attempts += 1;
+        }
+
+        if (textElement.scrollHeight > textElement.clientHeight + 1) {
+            textElement.style.overflowY = 'auto';
+        }
+    }
     
     togglePauseMenu(show) {
         let menu = document.getElementById('ingame-menu-overlay');
@@ -167,10 +190,25 @@ export default class UIManager {
                         .ingame-menu-item span {
                             position: absolute; top: 50%; left: 50%;
                             transform: translate(-50%, -50%);
-                            font-family: 'lilyshow', 'FangSong', '仿宋', 'SimSun', sans-serif;
+                            font-family: var(--font-button);
                             font-size: 28px; color: white;
                             text-shadow: 2px 2px 4px #000;
                             pointer-events: none;
+                        }
+                        @media (max-width: 900px) and (pointer: coarse) {
+                            .ingame-menu-content {
+                                gap: 10px;
+                            }
+                            .ingame-menu-item {
+                                width: min(44vw, 190px);
+                            }
+                            .ingame-menu-item span {
+                                width: 76%;
+                                font-size: 14px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                         }
                     </style>
                     <div class="ingame-menu-content">
@@ -341,6 +379,50 @@ export default class UIManager {
         }
     }
 
+    adjustDialogueLayout(text = '', speakerName = '') {
+        const dialogueGroup = document.querySelector('.dialogue-group');
+        const textElement = document.getElementById('dialogue-text');
+        const nameElement = document.getElementById('dialogue-name');
+        if (!dialogueGroup || !textElement || !nameElement) return;
+
+        const isTouch = window.matchMedia('(pointer: coarse)').matches;
+        const width = window.innerWidth;
+        const textLength = (text || '').replace(/\s+/g, '').length;
+
+        let fontSize = isTouch ? 18 : 22;
+        let lineHeight = isTouch ? 1.6 : 1.7;
+        let bottomPadding = isTouch ? 64 : 72;
+
+        if (textLength > 90) {
+            fontSize -= isTouch ? 2.5 : 2;
+            lineHeight = 1.54;
+            bottomPadding += 4;
+        }
+        if (textLength > 140) {
+            fontSize -= isTouch ? 1.5 : 1;
+            lineHeight = 1.45;
+            bottomPadding += 4;
+        }
+        if (width < 900) {
+            fontSize = Math.min(fontSize, isTouch ? 17 : 19);
+        }
+        if ((speakerName || '').length > 6) {
+            nameElement.style.maxWidth = '68%';
+        } else {
+            nameElement.style.maxWidth = '';
+        }
+
+        dialogueGroup.style.setProperty('--dialogue-font-size', `${Math.max(fontSize, 12)}px`);
+        dialogueGroup.style.setProperty('--dialogue-line-height', String(lineHeight));
+        dialogueGroup.style.setProperty('--dialogue-bottom-padding', `${bottomPadding}px`);
+        textElement.dataset.baseFontSize = String(Math.max(fontSize, 12));
+        textElement.dataset.baseLineHeight = String(Math.max(fontSize, 12) * lineHeight);
+        textElement.style.fontSize = `${Math.max(fontSize, 12)}px`;
+        textElement.style.lineHeight = `${Math.max(fontSize, 12) * lineHeight}px`;
+        textElement.style.overflowY = 'hidden';
+        this.fitDialogueText();
+    }
+
     showAchievementPopup(achievementId) {
         const achievement = this.engine.dataManager.getAllAchievements().find(a => a.id === achievementId);
         if (!achievement) return;
@@ -388,6 +470,27 @@ export default class UIManager {
                     margin: 0;
                     font-size: 0.9em;
                 }
+                @media (max-width: 900px) and (pointer: coarse) {
+                    .achievement-popup {
+                        width: 184px;
+                        padding: 8px 10px;
+                        gap: 8px;
+                        bottom: calc(12px + var(--safe-bottom, 0px));
+                    }
+                    .achievement-popup.show {
+                        right: 12px;
+                    }
+                    .popup-icon {
+                        width: 34px;
+                        height: 34px;
+                    }
+                    .popup-text h4 {
+                        font-size: 0.78em;
+                    }
+                    .popup-text p {
+                        font-size: 0.64em;
+                    }
+                }
             </style>
             <img class="popup-icon" src="${achievement.icon}" alt="成就">
             <div class="popup-text">
@@ -423,7 +526,7 @@ export default class UIManager {
             overlay.innerHTML = `
                 <style>
                     .unlock-modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 2100; }
-                    .unlock-modal { position: relative; background: linear-gradient(180deg,#111 0%, #0b0b0b 100%); color: #fff; padding: 26px; border-radius: 14px; width: 520px; max-width: 94%; box-shadow: 0 12px 40px rgba(0,0,0,0.7); font-family: 'lilyshow', 'Arial', sans-serif; text-align: center; overflow: visible; }
+                    .unlock-modal { position: relative; background: linear-gradient(180deg,#111 0%, #0b0b0b 100%); color: #fff; padding: 26px; border-radius: 14px; width: 520px; max-width: 94%; box-shadow: 0 12px 40px rgba(0,0,0,0.7); font-family: var(--font-body); text-align: center; overflow: visible; }
                     .unlock-modal h2 { margin: 0 0 8px 0; color: #ffea8a; font-size: 1.6rem; letter-spacing: 0.6px; }
                     .unlock-modal p { margin: 0 0 18px 0; font-size: 1.05rem; color: #fffdf0; }
                     .unlock-modal .actions { display:flex; justify-content:center; gap:16px; margin-top: 12px; }

@@ -1,4 +1,5 @@
 import SentencePrinter from '../modules/SentencePrinter.js';
+import { bindInteractivePress } from '../utils/interactions.js';
 
 const GameView = {
     render: (container, engine) => {
@@ -13,17 +14,16 @@ const GameView = {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 15px; /* 选项之间的垂直间距 */
+                    gap: 10px; /* 选项之间的垂直间距 */
                     z-index: 100;
-                    width: 80%;
-                    max-width: 700px;
+                    width: min(46vw, 380px);
                 }
 
                 /* 单个选项行样式 */
                 .choice-line {
                     position: relative; /* 作为内部绝对定位元素的锚点 */
                     width: 100%;
-                    min-height: 70px;
+                    min-height: 42px;
                     cursor: pointer;
                     display: flex;
                     justify-content: center;
@@ -55,11 +55,13 @@ const GameView = {
                 .choice-line .choice-text {
                     position: relative; /* 确保文字在图片上层 */
                     z-index: 2;
-                    font-family: 'lilyshow', 'FangSong', '仿宋', 'SimSun', sans-serif;
-                    font-size: clamp(18px, 2.2vw, 24px); /* 响应式字体大小 */
+                    font-family: var(--font-button);
+                    font-size: clamp(13px, 1.2vw, 16px); /* 响应式字体大小 */
                     color: white;
                     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* 文字阴影，增强可读性 */
-                    padding: 0 20px;
+                    width: 78%;
+                    padding: 0 14px;
+                    line-height: 1.3;
                     text-align: center;
                     pointer-events: none; /* 让鼠标事件穿透文字，触发父元素的悬停 */
                 }
@@ -94,7 +96,7 @@ const GameView = {
                     color: white;
                     margin-top: 0;
                     margin-bottom: 20px;
-                    font-family: 'lilyshow', sans-serif;
+                    font-family: var(--font-title);
                     font-size: 2em;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                     padding-bottom: 15px;
@@ -113,7 +115,7 @@ const GameView = {
                     font-size: 1.2em;
                     color: #e1abd2ff; /* 粉色，用于突出说话人 */
                     margin-bottom: 8px;
-                    font-family: 'lilyshow', sans-serif;
+                    font-family: var(--font-title);
                 }
                 .history-text {
                     font-size: 1.1em;
@@ -222,7 +224,7 @@ const GameView = {
                 .tooltip kbd {
                     display: inline-block;
                     padding: 2px 6px;
-                    font-family: monospace;
+                    font-family: var(--font-minigame);
                     background-color: #333;
                     border: 1px solid #555;
                     border-radius: 3px;
@@ -241,15 +243,16 @@ const GameView = {
                     right: 20px;
                     z-index: 200;
                     display: flex;
-                    gap: 10px;
+                    gap: 8px;
                 }
                 .ingame-menu-button {
                     position: relative;
-                    width: 200px;
+                    width: 126px;
                     background: none;
                     border: none;
                     cursor: pointer;
                     padding: 0;
+                    touch-action: manipulation;
                 }
                 .ingame-menu-button img {
                     width: 100%;
@@ -265,11 +268,15 @@ const GameView = {
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    font-family: 'lilyshow', 'FangSong', '仿宋', 'SimSun', sans-serif;
-                    font-size: 28px;
+                    font-family: var(--font-title);
+                    width: 80%;
+                    font-size: clamp(13px, 1.2vw, 16px);
                     color: white;
                     text-shadow: 1px 1px 3px #000;
                     pointer-events: none;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 .game-hud-bottom-right {
                     position: absolute;
@@ -285,7 +292,7 @@ const GameView = {
                     background: rgba(0,0,0,0.25);
                     border: 1px solid rgba(255,255,255,0.08);
                     color: rgba(255, 255, 255, 0.95);
-                    font-family: 'FangSong', '仿宋', sans-serif;
+                    font-family: var(--font-title);
                     font-size: clamp(14px, 1.6vw, 18px);
                     cursor: pointer;
                     padding: 10px 14px; /* 增大点击区域，提升移动端可点性 */
@@ -340,6 +347,61 @@ const GameView = {
                 @media (max-width: 520px) {
                     .game-hud-bottom-right { right: 14px; gap: 12px; }
                     .hud-button { padding: 12px 10px; font-size: 15px; border-radius: 8px; }
+                }
+                @media (max-width: 900px) and (pointer: coarse) {
+                    .char-box {
+                        width: 44vw;
+                        height: 63vh;
+                        bottom: 29%;
+                    }
+                    .char-box img {
+                        object-fit: contain;
+                    }
+                    .textbox-content {
+                        padding: 14px 16px 60px;
+                    }
+                    .textbox-name {
+                        font-size: clamp(16px, 4vw, 22px);
+                        line-height: 1.25;
+                    }
+                    .textbox-text {
+                        font-size: clamp(13px, 3.25vw, 18px);
+                        line-height: 1.55;
+                        white-space: pre-wrap;
+                        overflow-wrap: anywhere;
+                        word-break: break-word;
+                        padding-right: 2px;
+                        max-height: calc(100% - 42px);
+                        overflow-y: hidden;
+                        scrollbar-width: none;
+                    }
+                    .textbox-text::-webkit-scrollbar { display: none; }
+                    .choice-group {
+                        width: min(39vw, 205px);
+                        gap: 8px;
+                    }
+                    .choice-line {
+                        min-height: 32px;
+                    }
+                    .choice-line .choice-text {
+                        width: 76%;
+                        font-size: clamp(8px, 1.25vw, 10px);
+                        line-height: 1.22;
+                    }
+                    .game-hud-top-right {
+                        top: calc(var(--safe-top, 0px) + 8px);
+                        right: calc(var(--safe-right, 0px) + 8px);
+                    }
+                    .ingame-menu-button {
+                        width: min(15vw, 76px);
+                    }
+                    .ingame-menu-button span {
+                        width: 76%;
+                        font-size: clamp(8px, 1.1vw, 9px);
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
             </style>
             <div class="view game-view">
@@ -413,6 +475,8 @@ const GameView = {
         `;
         // 为此视图初始化打字机
         engine.uiManager.sentencePrinter = new SentencePrinter(document.getElementById('dialogue-text'));
+        engine.uiManager.sentencePrinter.onUpdate = () => engine.uiManager.fitDialogueText();
+        engine.uiManager.sentencePrinter.onComplete = () => engine.uiManager.fitDialogueText();
     },
     attachEventListeners: (container, engine) => {
         engine.uiManager.updateAutoPlayButton(engine.gameState.isAutoPlay);
@@ -434,68 +498,62 @@ const GameView = {
         });
 
         // 对话录按钮 (右上角)
-        document.getElementById('history-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            engine.audioManager.playSoundEffect('click');
-            engine.uiManager.toggleHistory(true); // 调用 UIManager 的方法来显示历史
+        bindInteractivePress(document.getElementById('history-btn'), {
+            onHover: () => engine.audioManager.playSoundEffect('hover'),
+            onClick: () => {
+                engine.audioManager.playSoundEffect('click');
+                engine.uiManager.toggleHistory(true);
+            },
         });
-        document.getElementById('history-btn').addEventListener('mouseover', () => engine.audioManager.playSoundEffect('hover'));
-
 
         // 关闭历史记录按钮
-        document.getElementById('history-close-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            engine.audioManager.playSoundEffect('click');
-            engine.uiManager.toggleHistory(false); // 调用 UIManager 的方法来隐藏历史
+        bindInteractivePress(document.getElementById('history-close-btn'), {
+            onClick: () => {
+                engine.audioManager.playSoundEffect('click');
+                engine.uiManager.toggleHistory(false);
+            },
         });
 
         // 自动播放按钮 (右上角)
-        document.getElementById('auto-play-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            engine.audioManager.playSoundEffect('click');
-            engine.toggleAutoPlay();
-            e.currentTarget.blur();
+        bindInteractivePress(document.getElementById('auto-play-btn'), {
+            onHover: () => engine.audioManager.playSoundEffect('hover'),
+            onClick: (e) => {
+                engine.audioManager.playSoundEffect('click');
+                engine.toggleAutoPlay();
+                e.currentTarget.blur();
+            },
         });
-        document.getElementById('auto-play-btn').addEventListener('mouseover', () => engine.audioManager.playSoundEffect('hover'));
 
         // 存档/读取按钮 (右下角)
         const saveBtn = document.getElementById('save-load-btn');
         if (saveBtn) {
-            saveBtn.setAttribute('role', 'button');
-            saveBtn.setAttribute('tabindex', '0');
             saveBtn.setAttribute('aria-label', '打开存档界面');
             const activateSave = (e) => {
-                if (e) e.stopPropagation();
                 engine.audioManager.playSoundEffect('click');
                 engine.showView('Load', { from: 'Game' });
             };
-            saveBtn.addEventListener('click', activateSave);
-            saveBtn.addEventListener('touchstart', (e) => { e.stopPropagation(); e.currentTarget.classList.add('pressed'); }, {passive:true});
-            saveBtn.addEventListener('touchend', (e) => { e.stopPropagation(); e.currentTarget.classList.remove('pressed'); activateSave(e); });
-            saveBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateSave(e); } });
+            bindInteractivePress(saveBtn, {
+                onHover: () => engine.audioManager.playSoundEffect('hover'),
+                onClick: activateSave,
+            });
         }
 
         // 全屏按钮 (右下角) — 增加键盘与触摸支持，及状态同步
         const fsBtn = document.getElementById('fullscreen-btn');
         if (fsBtn) {
-            fsBtn.setAttribute('role', 'button');
-            fsBtn.setAttribute('tabindex', '0');
             fsBtn.setAttribute('aria-pressed', String(!!document.fullscreenElement));
-            const toggleFullscreen = (e) => {
-                if (e) e.stopPropagation();
+            const toggleFullscreen = async (e) => {
                 engine.audioManager.playSoundEffect('click');
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen().catch(err => {
-                        alert(`错误: 无法进入全屏模式: ${err.message}`);
-                    });
-                } else {
-                    if (document.exitFullscreen) document.exitFullscreen();
+                try {
+                    await engine.viewportManager.toggleFullscreen();
+                } catch (err) {
+                    alert(`错误: 无法进入全屏模式: ${err.message}`);
                 }
             };
-            fsBtn.addEventListener('click', toggleFullscreen);
-            fsBtn.addEventListener('touchstart', (e) => { e.stopPropagation(); e.currentTarget.classList.add('pressed'); }, {passive:true});
-            fsBtn.addEventListener('touchend', (e) => { e.stopPropagation(); e.currentTarget.classList.remove('pressed'); toggleFullscreen(e); });
-            fsBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFullscreen(e); } });
+            bindInteractivePress(fsBtn, {
+                onHover: () => engine.audioManager.playSoundEffect('hover'),
+                onClick: toggleFullscreen,
+            });
 
             // 同步全屏状态，当用户使用 F11 或浏览器内其他方式时保持按钮状态
             const onFullScreenChange = () => {
@@ -514,32 +572,27 @@ const GameView = {
         // 标题按钮 (右下角)
         const titleBtn = document.getElementById('title-btn');
         if (titleBtn) {
-            titleBtn.setAttribute('role', 'button');
-            titleBtn.setAttribute('tabindex', '0');
             titleBtn.setAttribute('aria-label', '返回主菜单');
-            const activateTitle = (e) => { if (e) e.stopPropagation(); engine.audioManager.playSoundEffect('click'); engine.showView('MainMenu'); };
-            titleBtn.addEventListener('click', activateTitle);
-            titleBtn.addEventListener('touchstart', (e) => { e.stopPropagation(); e.currentTarget.classList.add('pressed'); }, {passive:true});
-            titleBtn.addEventListener('touchend', (e) => { e.stopPropagation(); e.currentTarget.classList.remove('pressed'); activateTitle(e); });
-            titleBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateTitle(e); } });
+            const activateTitle = () => { engine.audioManager.playSoundEffect('click'); engine.showView('MainMenu'); };
+            bindInteractivePress(titleBtn, {
+                onHover: () => engine.audioManager.playSoundEffect('hover'),
+                onClick: activateTitle,
+            });
         }
         
         // 设置按钮 (右下角)
         const settingsBtn = document.getElementById('settings-btn');
         if (settingsBtn) {
-            settingsBtn.setAttribute('role', 'button');
-            settingsBtn.setAttribute('tabindex', '0');
             settingsBtn.setAttribute('aria-label', '打开设置');
-            const activateSettings = (e) => { if (e) e.stopPropagation(); engine.audioManager.playSoundEffect('click'); engine.showView('Settings', { from: 'Game' }); };
-            settingsBtn.addEventListener('click', activateSettings);
-            settingsBtn.addEventListener('touchstart', (e) => { e.stopPropagation(); e.currentTarget.classList.add('pressed'); }, {passive:true});
-            settingsBtn.addEventListener('touchend', (e) => { e.stopPropagation(); e.currentTarget.classList.remove('pressed'); activateSettings(e); });
-            settingsBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateSettings(e); } });
+            const activateSettings = () => { engine.audioManager.playSoundEffect('click'); engine.showView('Settings', { from: 'Game' }); };
+            bindInteractivePress(settingsBtn, {
+                onHover: () => engine.audioManager.playSoundEffect('hover'),
+                onClick: activateSettings,
+            });
         }
 
-        // 为所有底部HUD按钮添加悬停音效
-        container.querySelectorAll('.hud-button').forEach(button => {
-            button.addEventListener('mouseover', () => engine.audioManager.playSoundEffect('hover'));
+        container.querySelectorAll('.choice-line').forEach((button) => {
+            button.style.touchAction = 'manipulation';
         });
 
         // 特殊图片点击绑定：当 data-seq 为 30483 时跳转到节点 50000

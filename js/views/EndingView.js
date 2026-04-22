@@ -5,7 +5,7 @@ const EndingView = {
                 .ending-view {
                     position: relative;
                     width: 100%;
-                    height: 100vh;
+                    height: calc(var(--app-vh, 1vh) * 100);
                     background-color: #000;
                     display: flex;
                     justify-content: center;
@@ -14,15 +14,16 @@ const EndingView = {
                 #ending-video {
                     width: 100%;
                     height: 100%;
-                    object-fit: contain; /* 保证视频完整显示，不变形 */
+                    object-fit: contain;
+                    background: #000;
                 }
                 #skip-ending-btn {
                     position: absolute;
-                    bottom: 30px;
-                    right: 40px;
+                    bottom: calc(20px + var(--safe-bottom, 0px));
+                    right: calc(20px + var(--safe-right, 0px));
                     padding: 12px 28px;
-                    font-size: 1.2em;
-                    font-family: 'FangSong', '仿宋', sans-serif;
+                    font-size: clamp(14px, 2vw, 20px);
+                    font-family: var(--font-title);
                     background-color: rgba(0, 0, 0, 0.6);
                     color: white;
                     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -36,9 +37,16 @@ const EndingView = {
                     opacity: 1;
                     background-color: rgba(255, 255, 255, 0.2);
                 }
+                @media (max-width: 820px) {
+                    #skip-ending-btn {
+                        padding: 10px 18px;
+                        bottom: calc(12px + var(--safe-bottom, 0px));
+                        right: calc(12px + var(--safe-right, 0px));
+                    }
+                }
             </style>
             <div class="view ending-view">
-                <video id="ending-video" src="./assets/video/ending.mov" autoplay></video>
+                <video id="ending-video" src="./assets/video/ending.mov" autoplay playsinline webkit-playsinline preload="auto"></video>
                 <button id="skip-ending-btn">跳过片尾</button>
             </div>
         `;

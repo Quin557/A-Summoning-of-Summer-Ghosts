@@ -5,7 +5,7 @@ const PreOpeningView = {
                 .pre-opening-view {
                     position: relative;
                     width: 100vw;
-                    height: 100vh;
+                    height: calc(var(--app-vh, 1vh) * 100);
                     background-color: #000;
                     overflow: hidden;
                 }
@@ -15,7 +15,8 @@ const PreOpeningView = {
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    object-fit: cover; /* 视频铺满屏幕，可能会有裁剪 */
+                    object-fit: contain;
+                    background: #000;
                 }
             </style>
             <div class="view pre-opening-view">

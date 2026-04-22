@@ -24,6 +24,10 @@ export class UIManager {
         });
     }
 
+    getScaledSize(desktop, mobile) {
+        return window.matchMedia('(pointer: coarse)').matches ? mobile : desktop;
+    }
+
     draw() {
         this.drawHealthOrbs();
         this.drawOrbCounter();
@@ -36,10 +40,10 @@ export class UIManager {
 
         const healthPerOrb = 20; 
         const numOrbs = Math.ceil(this.playerHealth.max / healthPerOrb);
-        const orbSize = 50;
-        const padding = 12;
-        const startX = 20;
-        const startY = 20;
+        const orbSize = this.getScaledSize(50, 38);
+        const padding = this.getScaledSize(12, 8);
+        const startX = this.getScaledSize(20, 14);
+        const startY = this.getScaledSize(20, 14);
 
         for (let i = 0; i < numOrbs; i++) {
             this.ctx.save();
@@ -67,8 +71,8 @@ export class UIManager {
         const x = this.canvas.width - 20;
         const y = 30;
         
-        this.ctx.fillStyle = 'white'; 
-        this.ctx.font = "bold 28px 'Courier New', serif"; 
+        this.ctx.fillStyle = '#efe8ff'; 
+        this.ctx.font = `700 ${this.getScaledSize(28, 18)}px 'lilyshow', 'Microsoft YaHei', sans-serif`;
         this.ctx.textAlign = 'right';
         this.ctx.textBaseline = 'middle';
         
@@ -87,10 +91,10 @@ export class UIManager {
         const secondsLeft = Math.max(0, Math.ceil(this.game.levelTimer / 1000));
         
         const x = this.canvas.width / 2;
-        const y = 30;
+        const y = this.getScaledSize(30, 22);
 
         this.ctx.fillStyle = secondsLeft <= 10 ? '#bd504fff' : 'white';
-        this.ctx.font = "bold 28px 'Courier New', serif";
+        this.ctx.font = `700 ${this.getScaledSize(28, 18)}px 'lilyshow', 'Microsoft YaHei', sans-serif`;
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
 
@@ -106,13 +110,15 @@ export class UIManager {
     }
 
     drawControlsHint() {
+        if (window.matchMedia('(pointer: coarse)').matches) return;
+
         const hintText = "A / D : 移动  |  W : 跳跃  |  J : 攻击";
         
         const x = this.canvas.width / 2;
         const y = this.canvas.height - 30;
 
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        this.ctx.font = "18px 'Courier New', monospace";
+        this.ctx.fillStyle = 'rgba(237, 230, 255, 0.82)';
+        this.ctx.font = "18px 'lilyshow', 'Microsoft YaHei', sans-serif";
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
 

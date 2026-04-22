@@ -2,6 +2,7 @@ import UIManager from './UIManager.js';
 import DataManager from './DataManager.js';
 import SaveManager from './SaveManager.js';
 import AudioManager from './AudioManager.js';
+import ViewportManager from './ViewportManager.js';
 import Animation from '../modules/Animation.js';
 import Localization from '../modules/Localization.js';
 
@@ -24,6 +25,7 @@ export default class GameEngine {
         this.dataManager = new DataManager();
         this.saveManager = new SaveManager(this);
         this.audioManager = new AudioManager();
+        this.viewportManager = new ViewportManager();
         this.animation = new Animation();
         this.localization = new Localization(this.dataManager);
         this.uiManager = new UIManager(this);
@@ -52,8 +54,9 @@ export default class GameEngine {
             Minigame: MinigameView,
             Ending: EndingView,
         };
-         this.autoAdvanceTimer = null;
+        this.autoAdvanceTimer = null;
         this.autoAdvanceAudioListener = null; 
+        this.assetExistenceCache = new Map();
     }
 
     async init() {
@@ -74,8 +77,10 @@ export default class GameEngine {
             this.uiManager.showAchievementPopup(achievementId);
         });
 
+        this.viewportManager.init();
         await this.dataManager.loadAllData();
         this.audioManager.init();
+        this.bindMediaState();
         
         // 调试用全局函数：可从控制台快速跳转到任意节点（便于测试）
         try {
@@ -114,6 +119,10 @@ export default class GameEngine {
         this.audioManager.stopVoice();
         this.cancelAutoAdvance(); 
         this.uiManager.clearContainer();
+        document.body.dataset.currentView = viewName;
+        document.dispatchEvent(new CustomEvent('app:viewchange', {
+            detail: { viewName, params }
+        }));
         const view = this.views[viewName];
         if (view) {
             view.render(this.container, this, params);
@@ -156,8 +165,12 @@ export default class GameEngine {
         this.uiManager.updateAutoPlayButton(this.gameState.isAutoPlay);
 
         if (this.gameState.isAutoPlay) {
+            this.audioManager.markUserActivated();
+            if (this.uiManager.isPrinting()) {
+                this.uiManager.skipPrinting();
+            }
             if (!this.gameState.isVoicePlaying || this.audioManager.voicePlayer.ended) {
-                 this.scheduleAutoAdvance();
+                this.scheduleAutoAdvance();
             }
         } else {
             this.cancelAutoAdvance();
@@ -177,10 +190,16 @@ export default class GameEngine {
     }
     
     async _checkFileExists(url) {
+        if (this.assetExistenceCache.has(url)) {
+            return this.assetExistenceCache.get(url);
+        }
+
         try {
             const response = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
+            this.assetExistenceCache.set(url, response.ok);
             return response.ok;
         } catch (error) {
+            this.assetExistenceCache.set(url, false);
             return false;
         }
     }
@@ -188,6 +207,7 @@ export default class GameEngine {
     scheduleAutoAdvance() {
         this.cancelAutoAdvance();
         if (!this.gameState.isAutoPlay) return;
+        if (!this.gameState.currentSave) return;
         if (this.uiManager.isPrinting()) {
             this.autoAdvanceTimer = setInterval(() => {
                 if (!this.uiManager.isPrinting()) {
@@ -293,7 +313,7 @@ export default class GameEngine {
             }
         }
 
-        this.gameState.isVoicePlaying = false; 
+        this.gameState.isVoicePlaying = false;
 
         if (node.voice && node.voice !== "null") {
             const voicePath = `./assets/voice/${node.voice}.mp3`;
@@ -389,6 +409,8 @@ export default class GameEngine {
     }
 
     requestPlayerInput(choiceIndex = null) {
+        this.audioManager.markUserActivated();
+
         if (this.gameState.interactionCount !== undefined) {
             this.gameState.interactionCount++; // 每次交互都增加计数
             switch (this.gameState.interactionCount) {
@@ -492,5 +514,20 @@ export default class GameEngine {
         this.audioManager.stopBgm();
         this.showView('Login');
         await this.animation.play('fadeOutBlack');
+    }
+
+    bindMediaState() {
+        const voicePlayer = this.audioManager.voicePlayer;
+        if (!voicePlayer) return;
+
+        voicePlayer.addEventListener('play', () => {
+            this.gameState.isVoicePlaying = true;
+        });
+        voicePlayer.addEventListener('pause', () => {
+            this.gameState.isVoicePlaying = !voicePlayer.ended && voicePlayer.currentTime > 0;
+        });
+        voicePlayer.addEventListener('ended', () => {
+            this.gameState.isVoicePlaying = false;
+        });
     }
 }

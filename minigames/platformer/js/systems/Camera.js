@@ -13,8 +13,8 @@ export class Camera {
     update(target, tilemap) {
         if (!target) return;
         //设置一个死区，玩家在此区域内移动时摄像机不移动，以免频繁晃动
-        const deadzoneX = this.viewportWidth / 4;
-        const deadzoneY = this.viewportHeight / 4;
+        const deadzoneX = this.viewportWidth * 0.3;
+        const deadzoneY = this.viewportHeight * 0.36;
 
         //玩家超出右侧死区，则向右移动摄像头
         if (target.x > this.x + this.viewportWidth - deadzoneX) {
@@ -25,10 +25,11 @@ export class Camera {
         }
 
         //如果玩家超出下侧死区，则向下移动摄像机
-        if (target.y > this.y + this.viewportHeight - deadzoneY) {
-            this.y = target.y - (this.viewportHeight - deadzoneY);
+        const targetFocusY = target.y - this.viewportHeight * 0.12;
+
+        if (targetFocusY > this.y + this.viewportHeight - deadzoneY) {
+            this.y = targetFocusY - (this.viewportHeight - deadzoneY);
         } else if (target.y < this.y + deadzoneY) {
-            //如果玩家超出上侧死区，则向上移动摄像机
             this.y = target.y - deadzoneY;
         }
 

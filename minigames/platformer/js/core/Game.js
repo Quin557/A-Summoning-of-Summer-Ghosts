@@ -37,6 +37,7 @@ export class Game {
 
         this.boundEntityDiedHandler = this._onEntityDied.bind(this);
         gameEvents.on('entityDied', this.boundEntityDiedHandler);
+        this.boundHandleResize = this.handleResize.bind(this);
         
         this._gameLoop = this._gameLoop.bind(this);
     }
@@ -105,7 +106,9 @@ export class Game {
     }
 
     async start() {
-        this.renderer.handleResize();
+        this.handleResize();
+        window.addEventListener('resize', this.boundHandleResize, { passive: true });
+        window.addEventListener('orientationchange', this.boundHandleResize, { passive: true });
         this.stateManager.addState('PLAY', new PlayState());
         
         this.boundOrbCollectedHandler = this._onOrbCollected.bind(this);
@@ -147,6 +150,8 @@ export class Game {
 
     destroy() {
         this.isRunning = false;
+        window.removeEventListener('resize', this.boundHandleResize);
+        window.removeEventListener('orientationchange', this.boundHandleResize);
         this.inputHandler.destroy();
         gameEvents.off('entityDied', this.boundEntityDiedHandler);
         if (this.boundOrbCollectedHandler) {
@@ -157,6 +162,12 @@ export class Game {
         }
         this.stopBgm();
         console.log("Minigame instance destroyed.");
+    }
+
+    handleResize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.renderer.handleResize();
     }
 
     _endGame(result) {
