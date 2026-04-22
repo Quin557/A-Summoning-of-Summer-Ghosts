@@ -8,9 +8,9 @@ export default class DataManager {
     async loadAllData() {
         try {
             const [storyResponse, langResponse, achievementsResponse] = await Promise.all([
-                fetch('./data/story.json'),
-                fetch('./data/lang/zh-cn.json'), 
-                fetch('./data/achievements.json')
+                fetch('./data/story.json', { cache: 'force-cache' }),
+                fetch('./data/lang/zh-cn.json', { cache: 'force-cache' }), 
+                fetch('./data/achievements.json', { cache: 'force-cache' })
             ]);
             this.story = await storyResponse.json();
             this.languageData = await langResponse.json();

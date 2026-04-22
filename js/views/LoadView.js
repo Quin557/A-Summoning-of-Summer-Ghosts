@@ -297,7 +297,7 @@ const LoadView = {
             const card = document.createElement('article');
             card.className = 'save-card';
             card.innerHTML = `
-                <img class="save-card-bg" src="./assets/img/menuBox/paper2.png" alt="">
+                <img class="save-card-bg" src="./assets/img/menuBox/paper2.jpg" alt="">
                 <div class="save-card-main">
                     <h2 class="save-card-name">${saveName}</h2>
                     <div class="save-card-meta">

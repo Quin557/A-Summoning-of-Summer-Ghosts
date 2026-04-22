@@ -32,7 +32,7 @@ export default class UIManager {
         } catch (e) { /* ignore */ }
     }
     
-    renderNode(node) {
+    renderNode(node, resolvedAssets = {}) {
         // 确保游戏视图元素存在
         if (!document.querySelector('.game-view')) return;
 
@@ -45,13 +45,13 @@ export default class UIManager {
 
         // 背景
         if (node.bgr) {
-            bgr.src = `./assets/img/bgr/${node.bgr}.png`;
+            bgr.src = resolvedAssets.bgr || `./assets/img/bgr/${node.bgr}.png`;
         }
 
         // 角色立绘
-        lChar.src = node.lCharactor ? `./assets/img/character/${node.lCharactor}.png` : '';
+        lChar.src = node.lCharactor ? (resolvedAssets.lChar || `./assets/img/character/${node.lCharactor}.png`) : '';
         document.getElementById('l-char-box').style.display = node.lCharactor ? 'flex' : 'none';
-        rChar.src = node.rCharactor ? `./assets/img/character/${node.rCharactor}.png` : '';
+        rChar.src = node.rCharactor ? (resolvedAssets.rChar || `./assets/img/character/${node.rCharactor}.png`) : '';
         document.getElementById('r-char-box').style.display = node.rCharactor ? 'flex' : 'none';
         
         // 对话
